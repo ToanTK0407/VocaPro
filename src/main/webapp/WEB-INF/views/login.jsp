@@ -26,7 +26,7 @@
 <main>
     <div class="container" id="container">
         <div class="form-container sign-up">
-            <form>
+            <form method="post" action="${pageContext.request.contextPath}/login">
                 <h1>Create Account</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"
@@ -40,19 +40,19 @@
                 </div>
                 <span>or use your email for registration</span>
                 <label>
-                    <input type="text" placeholder="Name"/>
+                    <input type="text" name="name" placeholder="Name"/>
                 </label>
                 <label>
-                    <input type="email" placeholder="Email"/>
+                    <input type="email" name="email" placeholder="Email"/>
                 </label>
                 <label>
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" name="password" placeholder="Password"/>
                 </label>
                 <button>Sign Up</button>
             </form>
         </div>
         <div class="form-container sign-in">
-            <form>
+            <form method="post" action="${pageContext.request.contextPath}/login">
                 <h1>Sign In</h1>
                 <div class="social-icons">
                     <a href="#" class="icon"
@@ -64,12 +64,12 @@
                     ><i class="fa-brands fa-linkedin-in"></i
                     ></a>
                 </div>
-                <span>or use your email password</span>
+                <span>or use your email</span>
                 <label>
-                    <input type="email" placeholder="Email"/>
+                    <input type="email" name="email" placeholder="Email"/>
                 </label>
                 <label>
-                    <input type="password" placeholder="Password"/>
+                    <input type="password" name="password" placeholder="Password"/>
                 </label>
                 <a href="#">Forget Your Password?</a>
                 <button>Sign In</button>
