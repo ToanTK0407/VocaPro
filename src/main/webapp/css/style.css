@@ -54,13 +54,13 @@ body {
     display: flex;
     flex-direction: column;
     font-family: system-ui, sans-serif;
-    background-color: var(--color-mint); /* màu cuối cùng bạn muốn */
+    min-height: 100vh;
+    background-color: var(--color-mint);
 }
 
-/* main sẽ chiếm toàn bộ khoảng trống còn lại */
 main {
     flex: 1;
-    padding-top: 100px;
+    padding-top: 70px;
 }
 
 /* ===== HEADER ===== */
@@ -78,7 +78,7 @@ header {
     position: fixed;
     top: 0;            /* dính sát trên */
     left: 0;
-    width: 98%;       /* chiếm toàn bộ chiều ngang */
+    width: 100%;       /* chiếm toàn bộ chiều ngang */
     z-index: 1000;
 }
 
@@ -94,7 +94,7 @@ header {
     transition: 0.3s;
     display: block;       /* chiếm trọn khối */
     height: 100%;         /* full chiều cao menu */
-    padding: 0.8rem 1rem; /* tăng chút padding để ra hình chữ nhật */
+    padding: 1rem 1rem; /* tăng chút padding để ra hình chữ nhật */
 }
 .left-menu a:hover {
     background: var(--color-cream); /* hover */
@@ -148,6 +148,7 @@ footer {
     color: var(--text-on-light);
     text-align: center;
     padding: 1.5rem;
+    width: 100%;
     /* bỏ margin-top */
 }
 footer a {
