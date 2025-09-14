@@ -17,6 +17,9 @@ body{
     height: 100vh;
 }
 
+main {
+    padding-top: 150px; !important;
+}
 .container{
     background-color: #fff;
     border-radius: 30px;

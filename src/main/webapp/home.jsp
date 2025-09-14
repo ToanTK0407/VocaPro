@@ -18,7 +18,7 @@
         <div class="search-container">
             <div class="search-box">
                 <label>
-                    <input type="text" placeholder="Search vocabulary ...">
+                    <input type="text" placeholder="Search words or vocabulary you want ...">
                 </label>
                 <button type="submit" class="search-btn">
                     <i class="fas fa-search"></i>
