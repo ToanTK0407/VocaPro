@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=<%= System.currentTimeMillis()%>">
     <link rel="stylesheet"
           href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=<%= System.currentTimeMillis()%>">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
@@ -77,6 +78,69 @@
                 </p>
                 <a href="#" class="start-btn">Start Learning</a>
             </div>
+        </div>
+    </div>
+    <div class="tutorials-category-container">
+        <h1 class="tutorials-title">Learn by vocabulary classification</h1>
+        <div class="tutorials-category-card">
+            <a href="">
+                <h5>Category Name</h5>
+                <div class="tutorials-category-description">
+                    Master professional vocabulary and business terminology. Learn the
+                    language of meetings, presentations, negotiations, and formal
+                    communications to excel in your career.
+                </div>
+            </a>
+        </div>
+        <div class="tutorials-category-card">
+            <a href="">
+                <h5>Category Name</h5>
+                <div class="tutorials-category-description">
+                    Master professional vocabulary and business terminology. Learn the
+                    language of meetings, presentations, negotiations, and formal
+                    communications to excel in your career.
+                </div>
+            </a>
+        </div>
+        <div class="tutorials-category-card">
+            <a href="">
+                <h5>Category Name</h5>
+                <div class="tutorials-category-description">
+                    Master professional vocabulary and business terminology. Learn the
+                    language of meetings, presentations, negotiations, and formal
+                    communications to excel in your career.
+                </div>
+            </a>
+        </div>
+        <div class="tutorials-category-card">
+            <a href="">
+                <h5>Category Name</h5>
+                <div class="tutorials-category-description">
+                    Master professional vocabulary and business terminology. Learn the
+                    language of meetings, presentations, negotiations, and formal
+                    communications to excel in your career.
+                </div>
+            </a>
+        </div>
+        <div class="tutorials-category-card">
+            <a href="">
+                <h5>Category Name</h5>
+                <div class="tutorials-category-description">
+                    Master professional vocabulary and business terminology. Learn the
+                    language of meetings, presentations, negotiations, and formal
+                    communications to excel in your career.
+                </div>
+            </a>
+        </div>
+        <div class="tutorials-category-card">
+            <a href="">
+                <h5>Category Name</h5>
+                <div class="tutorials-category-description">
+                    Master professional vocabulary and business terminology. Learn the
+                    language of meetings, presentations, negotiations, and formal
+                    communications to excel in your career.
+                </div>
+            </a>
         </div>
     </div>
 </main>
