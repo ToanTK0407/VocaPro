@@ -16,28 +16,13 @@
 </head>
 <body>
 <%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
+<%@ include file="/WEB-INF/views/header/header_category.jsp" %>
 <main class="tutorials-main">
-    <ul class="tutorials-list-header">
-        <li><a href="">Business</a></li>
-        <li><a href="">Travel</a></li>
-        <li><a href="">Academic</a></li>
-        <li><a href="">Daily Life</a></li>
-        <li><a href="">Technology</a></li>
-        <li><a href="">Health</a></li>
-        <li><a href="">Food</a></li>
-        <li><a href="">Entertainment</a></li>
-        <li><a href="">More category</a></li>
-        <li><a href="">More category</a></li>
-        <li><a href="">More category</a></li>
-        <li><a href="">More category</a></li>
-        <li><a href="">More category</a></li>
-        <li><a href="">More category</a></li>
-        <li><a href="">More category</a></li>
-    </ul>
 
     <div class="tutorials-intro">
         <h2>Improve your vocabulary</h2>
-        <p>Choose your learning level and start building your English vocabulary with our structured lessons designed for progressive learning.</p>
+        <p>Choose your learning level and start building your English vocabulary with our structured lessons designed
+            for progressive learning.</p>
         <div class="learning-path">
             <h4>Your Learning Journey</h4>
             <div class="level-progression">
@@ -52,7 +37,8 @@
             <div class="tutorials-content">
                 <h3>Beginner Level</h3>
                 <p>
-                    Start your English journey with essential vocabulary and basic words used in everyday conversations. Perfect for those who are just beginning to learn English or need to refresh their foundation.
+                    Start your English journey with essential vocabulary and basic words used in everyday conversations.
+                    Perfect for those who are just beginning to learn English or need to refresh their foundation.
                 </p>
                 <a href="#" class="start-btn">Start Learning</a>
             </div>
@@ -63,7 +49,8 @@
             <div class="tutorials-content">
                 <h3>Intermediate Level</h3>
                 <p>
-                    Expand your vocabulary with more complex words and expressions. Learn advanced grammar patterns and vocabulary that will help you communicate more effectively in various situations.
+                    Expand your vocabulary with more complex words and expressions. Learn advanced grammar patterns and
+                    vocabulary that will help you communicate more effectively in various situations.
                 </p>
                 <a href="#" class="start-btn">Start Learning</a>
             </div>
@@ -74,7 +61,8 @@
             <div class="tutorials-content">
                 <h3>Business Level</h3>
                 <p>
-                    Master professional vocabulary and business terminology. Learn the language of meetings, presentations, negotiations, and formal communications to excel in your career.
+                    Master professional vocabulary and business terminology. Learn the language of meetings,
+                    presentations, negotiations, and formal communications to excel in your career.
                 </p>
                 <a href="#" class="start-btn">Start Learning</a>
             </div>
