@@ -94,7 +94,19 @@
     </div>
 </main>
 <%@ include file="/WEB-INF/views/footer/footer.html" %>
-<script src="${pageContext.request.contextPath}/js/script.js"></script>
+<script>
+    const container = document.getElementById("container");
+    const registerBtn = document.getElementById("register");
+    const loginBtn = document.getElementById("login");
+
+    registerBtn.addEventListener("click", () => {
+        container.classList.add("active");
+    });
+
+    loginBtn.addEventListener("click", () => {
+        container.classList.remove("active");
+    });
+</script>
 
 </body>
 </html>

@@ -5,6 +5,7 @@
       <map>
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header/_header_unlogin.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/header" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/vocabulary/mainScreen.jsp" value="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/vocabulary" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/index.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
       </map>
     </option>

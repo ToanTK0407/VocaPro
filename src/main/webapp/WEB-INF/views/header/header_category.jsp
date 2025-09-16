@@ -9,9 +9,4 @@
     <li><a href="">Entertainment</a></li>
     <li><a href="">More category</a></li>
     <li><a href="">More category</a></li>
-    <li><a href="">More category</a></li>
-    <li><a href="">More category</a></li>
-    <li><a href="">More category</a></li>
-    <li><a href="">More category</a></li>
-    <li><a href="">More category</a></li>
 </ul>
