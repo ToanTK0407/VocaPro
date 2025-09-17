@@ -77,6 +77,107 @@
                 </div>
             </div>
         </div>
+        <div
+                class="multiple-choice-container"
+                style="display: none; min-width: 800px"
+        >
+            <div class="container-fluid h-100">
+                <div class="row h-100 align-items-center">
+                    <!-- Left Navigation Panel -->
+
+                    <div class="col-10">
+                        <div class="mc-question-panel">
+                            <div class="question-header text-center mb-4">
+                                <h3 class="question-title">
+                                    <i class="fas fa-question-circle text-primary"></i>
+                                    What is the meaning of:
+                                </h3>
+                                <div class="mc-word-display">
+                                    <span class="word-text">Innovation</span>
+                                    <button
+                                            class="btn btn-outline-primary btn-sm ms-2 audio-btn-quiz"
+                                    >
+                                        <i class="fas fa-volume-up"></i>
+                                    </button>
+                                </div>
+                                <div class="word-phonetic text-muted">/ˌɪn.əˈveɪ.ʃən/</div>
+                            </div>
+
+                            <div class="mc-options-grid">
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <button
+                                                class="btn btn-outline-secondary w-100 mc-option-btn"
+                                                data-answer="correct"
+                                        >
+                                            <span class="option-letter">A</span>
+                                            <span class="option-text">Sự đổi mới, sáng tạo</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button
+                                                class="btn btn-outline-secondary w-100 mc-option-btn"
+                                                data-answer="wrong"
+                                        >
+                                            <span class="option-letter">B</span>
+                                            <span class="option-text">Công nghệ</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button
+                                                class="btn btn-outline-secondary w-100 mc-option-btn"
+                                                data-answer="wrong"
+                                        >
+                                            <span class="option-letter">C</span>
+                                            <span class="option-text">Môi trường</span>
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button
+                                                class="btn btn-outline-secondary w-100 mc-option-btn"
+                                                data-answer="wrong"
+                                        >
+                                            <span class="option-letter">D</span>
+                                            <span class="option-text">Thành tựu</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Navigation Panel -->
+                    <div class="col-2">
+                        <div class="mc-nav-panel right-panel">
+                            <div class="nav-section">
+                                <h6 class="nav-title">
+                                    <i class="fas fa-cog"></i> Actions
+                                </h6>
+                                <button class="btn btn-outline-info btn-sm w-100 mb-2">
+                                    <i class="fas fa-flag"></i> Flag
+                                </button>
+                                <button class="btn btn-outline-secondary btn-sm w-100">
+                                    <i class="fas fa-times"></i> Skip
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <div class="navigation-controls">
+                    <button class="nav-btn prev-btn" onclick="previousCard()">
+                        <i class="fas fa-chevron-left"></i> Previous
+                    </button>
+                    <div class="progress-info">
+                        <span class="progress-text">1/8</span>
+                    </div>
+                    <button class="nav-btn next-btn" onclick="nextCard()">
+                        Next <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
         <div class="flashcard-container" style="display: none">
             <div class="flashcard-wrapper">
                 <div class="flashcard" onclick="flipCard()">
@@ -189,78 +290,79 @@
 <script>
     document.addEventListener("DOMContentLoaded", () => {
         const vocabulary = [
-            {word: "Innovation", phonetic: "/ˌɪn.əˈveɪ.ʃən/", meaning: "Sự đổi mới, sáng tạo"},
-            {word: "Technology", phonetic: "/tekˈnɒl.ə.dʒi/", meaning: "Công nghệ"},
-            {word: "Development", phonetic: "/dɪˈvel.əp.mənt/", meaning: "Sự phát triển"},
-            {word: "Communication", phonetic: "/kəˌmjuː.nɪˈkeɪ.ʃən/", meaning: "Giao tiếp, truyền thông"},
-            {word: "Environment", phonetic: "/ɪnˈvaɪ.rən.mənt/", meaning: "Môi trường"},
-            {word: "Opportunity", phonetic: "/ˌɒp.əˈtʃuː.nə.ti/", meaning: "Cơ hội"},
-            {word: "Achievement", phonetic: "/əˈtʃiːv.mənt/", meaning: "Thành tựu, thành tích"},
-            {word: "Experience", phonetic: "/ɪkˈspɪə.ri.əns/", meaning: "Kinh nghiệm, trải nghiệm"},
+            {
+                word: "Innovation",
+                phonetic: "/ˌɪn.əˈveɪ.ʃən/",
+                meaning: "Sự đổi mới, sáng tạo",
+            },
+            {
+                word: "Technology",
+                phonetic: "/tekˈnɒl.ə.dʒi/",
+                meaning: "Công nghệ",
+            },
+            {
+                word: "Development",
+                phonetic: "/dɪˈvel.əp.mənt/",
+                meaning: "Sự phát triển",
+            },
+            {
+                word: "Communication",
+                phonetic: "/kəˌmjuː.nɪˈkeɪ.ʃən/",
+                meaning: "Giao tiếp, truyền thông",
+            },
+            {
+                word: "Environment",
+                phonetic: "/ɪnˈvaɪ.rən.mənt/",
+                meaning: "Môi trường",
+            },
+            {
+                word: "Opportunity",
+                phonetic: "/ˌɒp.əˈtʃuː.nə.ti/",
+                meaning: "Cơ hội",
+            },
+            {
+                word: "Achievement",
+                phonetic: "/əˈtʃiːv.mənt/",
+                meaning: "Thành tựu, thành tích",
+            },
+            {
+                word: "Experience",
+                phonetic: "/ɪkˈspɪə.ri.əns/",
+                meaning: "Kinh nghiệm, trải nghiệm",
+            },
         ];
 
+        // ==========================
+        // FLASHCARD LOGIC
+        // ==========================
         let currentIndex = 0;
         let isFlipped = false;
 
-        // Elements
         const flashcard = document.querySelector(".flashcard");
-        const progressText = document.querySelector(".progress-text");
-        const prevBtn = document.querySelector(".prev-btn");
-        const nextBtn = document.querySelector(".next-btn");
         const cardFront = flashcard.querySelector(".card-front");
         const cardBack = flashcard.querySelector(".card-back");
+        const flashProgress = document.querySelector(
+            ".flashcard-container .progress-text"
+        );
 
-        if (!flashcard || !progressText) {
-            console.error("Không tìm thấy elements cần thiết!");
-            return;
-        }
-
-        // Update card content + progress
         function updateCard() {
             const current = vocabulary[currentIndex];
-            if (!current) return;
-
-            const frontMain = cardFront.querySelector(".word-main");
-            const frontPhonetic = cardFront.querySelector(".word-phonetic");
-            const backMain = cardBack.querySelector(".word-main");
-            const backPhonetic = cardBack.querySelector(".word-phonetic");
-            const backMeaning = cardBack.querySelector(".word-meaning");
-
-            if (frontMain) frontMain.textContent = current.word;
-            if (frontPhonetic) frontPhonetic.textContent = current.phonetic;
-            if (backMain) backMain.textContent = current.word;
-            if (backPhonetic) backPhonetic.textContent = current.phonetic;
-            if (backMeaning) backMeaning.textContent = current.meaning;
+            cardFront.querySelector(".word-main").textContent = current.word;
+            cardFront.querySelector(".word-phonetic").textContent =
+                current.phonetic;
+            cardBack.querySelector(".word-main").textContent = current.word;
+            cardBack.querySelector(".word-phonetic").textContent =
+                current.phonetic;
+            cardBack.querySelector(".word-meaning").textContent = current.meaning;
 
             flashcard.classList.remove("flipped");
             isFlipped = false;
-
-            updateProgress();
-            updateNavigationButtons();
-
-            // Debug: giúp kiểm tra số lần gọi
-            console.log(`updateCard called -> index=${currentIndex} (${currentIndex + 1}/${vocabulary.length})`);
+            flashProgress.textContent = `${currentIndex + 1}/${
+            vocabulary.length
+          }`;
         }
 
-        function updateProgress() {
-            progressText.textContent = (currentIndex + 1) + "/" +   (vocabulary.length);
-        }
-
-        function updateNavigationButtons() {
-            if (prevBtn) {
-                prevBtn.disabled = currentIndex === 0;
-                prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1';
-            }
-            if (nextBtn) {
-                nextBtn.disabled = currentIndex === vocabulary.length - 1;
-                nextBtn.style.opacity = currentIndex === vocabulary.length - 1 ? '0.5' : '1';
-            }
-        }
-
-        // Handlers (không gán vào window, dùng trực tiếp addEventListener)
-        function flipCardHandler(e) {
-            // nếu click vào audio button thì không flip (audio có stopPropagation nhưng giữ an toàn)
-            if (e.target.closest(".audio-btn")) return;
+        function flipCard() {
             flashcard.classList.toggle("flipped");
             isFlipped = !isFlipped;
         }
@@ -281,106 +383,203 @@
             }
         }
 
-        function playAudio(e) {
-            e.stopPropagation();
-            const btn = e.currentTarget;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-            setTimeout(() => {
-                btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                console.log("Playing audio:", vocabulary[currentIndex].word);
-            }, 700);
+        // ==========================
+        // QUIZ (MULTIPLE CHOICE) LOGIC
+        // ==========================
+        let currentQuizIndex = 0;
+        const quizProgress = document.querySelector(
+            ".multiple-choice-container .progress-text"
+        );
+
+        function updateQuiz() {
+            const current = vocabulary[currentQuizIndex];
+            document.querySelector(".mc-word-display .word-text").textContent =
+                current.word;
+            document.querySelector(
+                ".multiple-choice-container .word-phonetic"
+            ).textContent = current.phonetic;
+            quizProgress.textContent = `${currentQuizIndex + 1}/${
+            vocabulary.length
+          }`;
+
+            // Gán lại options (demo: đáp án đúng ở A, các đáp án còn lại giả định tạm)
+            const options = document.querySelectorAll(".mc-option-btn");
+            options[0].dataset.answer = "correct";
+            options[0].querySelector(".option-text").textContent =
+                current.meaning;
+
+            options[1].dataset.answer = "wrong";
+            options[1].querySelector(".option-text").textContent = "Nhiễu 1";
+
+            options[2].dataset.answer = "wrong";
+            options[2].querySelector(".option-text").textContent = "Nhiễu 2";
+
+            options[3].dataset.answer = "wrong";
+            options[3].querySelector(".option-text").textContent = "Nhiễu 3";
         }
 
-        // Events: chỉ dùng addEventListener (1 binding)
-        flashcard.addEventListener("click", flipCardHandler);
+        function prevQuiz() {
+            if (currentQuizIndex > 0) {
+                currentQuizIndex--;
+                updateQuiz();
+            }
+        }
 
-        if (prevBtn) prevBtn.addEventListener("click", previousCard);
-        if (nextBtn) nextBtn.addEventListener("click", nextCard);
+        function nextQuiz() {
+            if (currentQuizIndex < vocabulary.length - 1) {
+                currentQuizIndex++;
+                updateQuiz();
+            } else {
+                alert("🎉 Bạn đã làm hết câu hỏi!");
+            }
+        }
 
-        // audio buttons
-        const audioBtns = document.querySelectorAll(".audio-btn");
-        audioBtns.forEach(btn => btn.addEventListener("click", playAudio));
+        // ==========================
+        // EVENT BINDINGS
+        // ==========================
 
-        // keyboard navigation (chỉ khi đang hiển thị flashcard)
+        // Flashcard events
+        flashcard.addEventListener("click", flipCard);
+        flashcard.querySelectorAll(".audio-btn").forEach((btn) =>
+            btn.addEventListener("click", (e) => {
+                e.stopPropagation();
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-volume-up"></i>';
+                    console.log("Playing audio:", vocabulary[currentIndex].word);
+                }, 1000);
+            })
+        );
+        document
+            .querySelector(".flashcard-container .prev-btn")
+            .addEventListener("click", previousCard);
+        document
+            .querySelector(".flashcard-container .next-btn")
+            .addEventListener("click", nextCard);
+
+        // Quiz events
+        document
+            .querySelector(".multiple-choice-container .prev-btn")
+            .addEventListener("click", prevQuiz);
+        document
+            .querySelector(".multiple-choice-container .next-btn")
+            .addEventListener("click", nextQuiz);
+
+        // Keyboard navigation (chỉ áp dụng cho flashcard)
         document.addEventListener("keydown", (e) => {
-            const flashcardContainer = document.querySelector(".flashcard-container");
-            if (!flashcardContainer || flashcardContainer.style.display === "none") return;
-
             switch (e.key) {
                 case " ":
                 case "Enter":
-                    e.preventDefault();
-                    flipCardHandler(e);
+                    if (
+                        flashcard.closest(".flashcard-container").style.display !==
+                        "none"
+                    ) {
+                        e.preventDefault();
+                        flipCard();
+                    }
                     break;
                 case "ArrowLeft":
                     e.preventDefault();
-                    previousCard();
+                    if (
+                        flashcard.closest(".flashcard-container").style.display !==
+                        "none"
+                    ) {
+                        previousCard();
+                    } else if (
+                        document.querySelector(".multiple-choice-container").style
+                            .display !== "none"
+                    ) {
+                        prevQuiz();
+                    }
                     break;
                 case "ArrowRight":
                     e.preventDefault();
-                    nextCard();
+                    if (
+                        flashcard.closest(".flashcard-container").style.display !==
+                        "none"
+                    ) {
+                        nextCard();
+                    } else if (
+                        document.querySelector(".multiple-choice-container").style
+                            .display !== "none"
+                    ) {
+                        nextQuiz();
+                    }
                     break;
             }
         });
 
-        // Word list click -> sync index + updateCard (chỉ 1 lần)
-        const wordItems = document.querySelectorAll(".word-item");
-        wordItems.forEach((item, index) => {
-            item.addEventListener("click", () => {
-                wordItems.forEach(w => w.classList.remove("selected"));
-                item.classList.add("selected");
-                currentIndex = index;
-                updateCard();
-            });
-        });
-
-        // Mode switching: khi mở flashcard luôn gọi updateCard() 1 lần
-        const flashcardContainer = document.querySelector(".flashcard-container");
+        // ==========================
+        // MODE SWITCHING
+        // ==========================
+        const flashcardContainer = document.querySelector(
+            ".flashcard-container"
+        );
         const listSection = document.querySelector(".vocabulary-list-section");
+        const multipleChoiceContainer = document.querySelector(
+            ".multiple-choice-container"
+        );
+
         const flashcardBtn = document.querySelector(".flashcard-btn");
         const quizBtn = document.querySelector(".quiz-btn");
         const practiceBtn = document.querySelector(".practice-btn");
         const testBtn = document.querySelector(".test-btn");
         const buttons = document.querySelectorAll(".function-btn");
 
-        let currentMode = "list";
+        let currentMode = null;
 
         function switchMode(mode, clickedBtn) {
             if (currentMode === mode) {
-                currentMode = "list";
-                buttons.forEach(b => b.classList.remove("active"));
-                if (flashcardContainer) flashcardContainer.style.display = "none";
-                if (listSection) listSection.style.display = "block";
+                currentMode = null;
+                buttons.forEach((b) => b.classList.remove("active"));
+                flashcardContainer.style.display = "none";
+                multipleChoiceContainer.style.display = "none";
+                listSection.style.display = "block";
                 return;
             }
 
             currentMode = mode;
-            buttons.forEach(b => b.classList.remove("active"));
-            if (clickedBtn) clickedBtn.classList.add("active");
+            buttons.forEach((b) => b.classList.remove("active"));
+            clickedBtn.classList.add("active");
 
-            if (flashcardContainer) flashcardContainer.style.display = "none";
-            if (listSection) listSection.style.display = "none";
+            flashcardContainer.style.display = "none";
+            listSection.style.display = "none";
+            multipleChoiceContainer.style.display = "none";
 
             if (mode === "flashcard") {
-                if (flashcardContainer) flashcardContainer.style.display = "flex";
-                // luôn update 1 lần để đồng bộ nội dung
+                flashcardContainer.style.display = "flex";
                 updateCard();
+            } else if (mode === "quiz") {
+                multipleChoiceContainer.style.display = "block";
+                updateQuiz();
             } else if (mode === "list") {
-                if (listSection) listSection.style.display = "block";
+                listSection.style.display = "block";
             }
         }
 
-        if (flashcardBtn) flashcardBtn.addEventListener("click", () => switchMode("flashcard", flashcardBtn));
-        if (quizBtn) quizBtn.addEventListener("click", () => switchMode("quiz", quizBtn));
-        if (practiceBtn) practiceBtn.addEventListener("click", () => switchMode("practice", practiceBtn));
-        if (testBtn) testBtn.addEventListener("click", () => switchMode("test", testBtn));
+        flashcardBtn.addEventListener("click", () =>
+            switchMode("flashcard", flashcardBtn)
+        );
+        quizBtn.addEventListener("click", () => switchMode("quiz", quizBtn));
+        practiceBtn.addEventListener("click", () =>
+            switchMode("practice", practiceBtn)
+        );
+        testBtn.addEventListener("click", () => switchMode("test", testBtn));
 
-        // INIT: gọi 1 lần
-        updateCard();
-        console.log("Flashcard initialized. Keyboard controls: Space/Enter=Flip | ←/→=Navigate");
+        const wordItems = document.querySelectorAll(".word-item");
+        wordItems.forEach((item, index) => {
+            item.addEventListener("click", () => {
+                wordItems.forEach((w) => w.classList.remove("selected"));
+                item.classList.add("selected");
+                currentIndex = index;
+                updateCard();
+            });
+        });
+        // Mặc định load list
+        listSection.style.display = "block";
+        updateCard(); // để flashcard sẵn sàng
+        updateQuiz(); // để quiz sẵn sàng
     });
 </script>
-
-
 </body>
 </html>

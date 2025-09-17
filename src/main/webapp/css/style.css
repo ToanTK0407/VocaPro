@@ -780,6 +780,7 @@ footer a:hover {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     height: fit-content;
     width: 100%;
+    margin: 2rem 0;
 }
 
 .vocabulary-list-section h2 {
@@ -1238,6 +1239,78 @@ footer a:hover {
 .stat-value {
     font-weight: bold;
     color: #333;
+}
+
+.multiple-choice {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: var(--shadow-medium);
+    max-width: 600px;
+    margin: auto;
+}
+
+.mc-question h3 {
+    margin-bottom: 10px;
+    color: var(--color-navy);
+}
+
+.mc-word {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: var(--color-mint);
+}
+
+.mc-options {
+    display: grid;
+    gap: 15px;
+    width: 100%;
+}
+
+.mc-option {
+    padding: 15px;
+    border-radius: 12px;
+    border: 2px solid #eee;
+    background: #f9f9f9;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    text-align: left;
+}
+
+.mc-option:hover {
+    background: #f1faff;
+    border-color: var(--color-mint);
+}
+
+.mc-option.correct {
+    background: #e6f8ec;
+    border-color: #2ecc71;
+    color: #27ae60;
+}
+
+.mc-option.wrong {
+    background: #fdecea;
+    border-color: #e74c3c;
+    color: #c0392b;
+}
+
+.mc-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.multiple-choice-container {
+    background: white;
+    border-radius: 16px;
+    margin: 2rem;
 }
 
 /* ===== RESPONSIVE ===== */
