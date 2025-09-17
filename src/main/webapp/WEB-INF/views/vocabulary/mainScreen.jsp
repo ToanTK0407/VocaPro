@@ -23,7 +23,7 @@
         <div class="function-panel">
             <!-- Study Modes -->
             <div class="function-card">
-                <h3><i class="fas fa-graduation-cap"></i> Chế độ học</h3>
+                <h3><i class="fas fa-graduation-cap"></i> Study Mode</h3>
                 <div class="function-buttons">
                     <button class="function-btn flashcard-btn">
                         <i class="fas fa-clone"></i>
@@ -31,48 +31,48 @@
                     </button>
                     <button class="function-btn quiz-btn">
                         <i class="fas fa-question-circle"></i>
-                        <span>Trắc nghiệm</span>
+                        <span>Multiple Choice</span>
                     </button>
                     <button class="function-btn practice-btn">
                         <i class="fas fa-pen"></i>
-                        <span>Luyện tập</span>
+                        <span>Practices</span>
                     </button>
                     <button class="function-btn test-btn">
                         <i class="fas fa-clipboard-check"></i>
-                        <span>Kiểm tra</span>
+                        <span>Exam</span>
                     </button>
                 </div>
             </div>
             <div class="function-card">
-                <h3><i class="fas fa-lightning-bolt"></i> Thao tác nhanh</h3>
+                <h3><i class="fas fa-list"></i> Quick Operation</h3>
                 <div class="function-buttons">
                     <button
                             class="function-btn"
                             style="background: linear-gradient(135deg, #ff6b6b, #ee5a52)"
                     >
                         <i class="fas fa-plus"></i>
-                        <span>Thêm từ mới</span>
+                        <span>Add Word</span>
                     </button>
                     <button
                             class="function-btn"
                             style="background: linear-gradient(135deg, #4ecdc4, #44a08d)"
                     >
                         <i class="fas fa-random"></i>
-                        <span>Học ngẫu nhiên</span>
+                        <span>Random Word</span>
                     </button>
                     <button
                             class="function-btn"
                             style="background: linear-gradient(135deg, #45b7d1, #96c93d)"
                     >
                         <i class="fas fa-download"></i>
-                        <span>Xuất danh sách</span>
+                        <span>Export List</span>
                     </button>
                     <button
                             class="function-btn"
                             style="background: linear-gradient(135deg, #f39c12, #f1c40f)"
                     >
                         <i class="fas fa-cog"></i>
-                        <span>Cài đặt</span>
+                        <span>Settings</span>
                     </button>
                 </div>
             </div>
