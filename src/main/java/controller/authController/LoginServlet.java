@@ -25,7 +25,7 @@ public class LoginServlet extends HttpServlet {
             if (user != null) {
                 request.getSession().setAttribute("user", user);
                 request.setAttribute("success-message", "Login successful");
-                request.getRequestDispatcher(" home.jsp").forward(request, response);
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             } else {
                 request.setAttribute("error-message", "Invalid username or password");
                 request.getRequestDispatcher("/WEB-INF/views/login.jsp").forward(request, response);

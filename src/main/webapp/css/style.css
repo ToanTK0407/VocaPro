@@ -261,6 +261,24 @@ header {
     box-shadow: 0 8px 25px rgba(5, 56, 107, 0.3);
 }
 
+.dropdown-toggle::after {
+    display: none; /* ẩn mũi tên nhỏ mặc định của Bootstrap */
+}
+
+.dropdown-menu {
+    border-radius: 12px;
+    padding: 8px;
+    z-index: 1001;
+}
+
+.dropdown-item {
+    border-radius: 8px;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f5f9;
+    color: #05386b;
+}
 /* ===== FOOTER ===== */
 footer {
     background: linear-gradient(135deg, var(--color-ink), var(--color-ink-dark));

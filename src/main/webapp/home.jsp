@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="vi">
@@ -10,7 +11,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
+<c:choose>
+    <c:when test="${not empty sessionScope.user}">
+        <%@ include file="/WEB-INF/views/header/header_login.jsp" %>
+    </c:when>
+    <c:otherwise>
+        <%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
+    </c:otherwise>
+</c:choose>
+<%--<%@ include file="/WEB-INF/views/header/header_login.jsp" %>--%>
 <main>
     <section id="hero">
         <h1>VocaPro</h1>
@@ -40,5 +49,6 @@
     </section>
 </main>
 <%@ include file="/WEB-INF/views/footer/footer.html" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
