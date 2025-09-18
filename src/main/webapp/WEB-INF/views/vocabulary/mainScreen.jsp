@@ -77,6 +77,7 @@
                 </div>
             </div>
         </div>
+        <%--MULTIPLE CHOICE FUNCTION--%>
         <div
                 class="multiple-choice-container"
                 style="display: none; min-width: 800px"
@@ -178,6 +179,7 @@
                 </div>
             </div>
         </div>
+        <%--FLASHCARD FUNCTION--%>
         <div class="flashcard-container" style="display: none">
             <div class="flashcard-wrapper">
                 <div class="flashcard" onclick="flipCard()">
@@ -220,70 +222,114 @@
                 </button>
             </div>
         </div>
-        <div class="vocabulary-list-section" style="display: block">
-            <h2><i class="fas fa-book"></i> List of Words</h2>
-
-            <div class="vocabulary-search">
-                <input type="text" placeholder="Search words by ..."/>
+        <%--PRACTICE FUNCTION--%>
+        <div class="practice-container" style="display: none">
+            <div class="practice-header">
+                <h2 class="practice-title">
+                    <i class="fas fa-clipboard-check"></i>
+                    Vocabulary Practice
+                </h2>
+                <p class="practice-subtitle">Translate the Vietnamese meaning to English</p>
             </div>
 
-            <div class="word-filters">
-                <button class="filter-btn active">Tất cả</button>
-                <button class="filter-btn">Đã học</button>
-                <button class="filter-btn">Chưa học</button>
-                <button class="filter-btn">Khó</button>
+            <div class="question-card">
+                <div class="question-number">Question 1</div>
+                <button class="flag-btn" onclick="toggleFlag()" title="Flag this question">
+                    <i class="fas fa-flag"></i>
+                </button>
+
+                <div class="question-content">
+                    <h3 class="question-text">Sự đổi mới, sáng tạo</h3>
+                    <p class="question-hint">Enter the English word for this Vietnamese meaning</p>
+                    <div class="answer-feedback"></div>
+                    <input
+                            type="text"
+                            class="answer-input"
+                            placeholder="Type your answer here..."
+                            autocomplete="off"
+                    />
+                </div>
             </div>
 
-            <div class="vocabulary-list">
-                <div class="word-item selected">
-                    <div class="word-main">Innovation</div>
-                    <div class="word-phonetic">/ˌɪn.əˈveɪ.ʃən/</div>
-                    <div class="word-meaning">Sự đổi mới, sáng tạo</div>
+            <div class="navigation-controls">
+                <button class="nav-btn prev-btn" onclick="previousCard()">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="progress-info">
+                    <span class="progress-text">1/8</span>
                 </div>
-
-                <div class="word-item">
-                    <div class="word-main">Technology</div>
-                    <div class="word-phonetic">/tekˈnɒl.ə.dʒi/</div>
-                    <div class="word-meaning">Công nghệ</div>
-                </div>
-
-                <div class="word-item">
-                    <div class="word-main">Development</div>
-                    <div class="word-phonetic">/dɪˈvel.əp.mənt/</div>
-                    <div class="word-meaning">Sự phát triển</div>
-                </div>
-
-                <div class="word-item">
-                    <div class="word-main">Communication</div>
-                    <div class="word-phonetic">/kəˌmjuː.nɪˈkeɪ.ʃən/</div>
-                    <div class="word-meaning">Giao tiếp, truyền thông</div>
-                </div>
-
-                <div class="word-item">
-                    <div class="word-main">Environment</div>
-                    <div class="word-phonetic">/ɪnˈvaɪ.rən.mənt/</div>
-                    <div class="word-meaning">Môi trường</div>
-                </div>
-
-                <div class="word-item">
-                    <div class="word-main">Opportunity</div>
-                    <div class="word-phonetic">/ˌɒp.əˈtʃuː.nə.ti/</div>
-                    <div class="word-meaning">Cơ hội</div>
-                </div>
-
-                <div class="word-item">
-                    <div class="word-main">Achievement</div>
-                    <div class="word-phonetic">/əˈtʃiːv.mənt/</div>
-                    <div class="word-meaning">Thành tựu, thành tích</div>
-                </div>
-
-                <div class="word-item">
-                    <div class="word-main">Experience</div>
-                    <div class="word-phonetic">/ɪkˈspɪə.ri.əns/</div>
-                    <div class="word-meaning">Kinh nghiệm, trải nghiệm</div>
-                </div>
+                <button class="nav-btn next-btn" onclick="nextCard()">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
+    </div>
+
+
+    <div class="vocabulary-list-section" style="display: block">
+        <h2><i class="fas fa-book"></i> List of Words</h2>
+
+        <div class="vocabulary-search">
+            <input type="text" placeholder="Search words by ..."/>
+        </div>
+
+        <div class="word-filters">
+            <button class="filter-btn active">Tất cả</button>
+            <button class="filter-btn">Đã học</button>
+            <button class="filter-btn">Chưa học</button>
+            <button class="filter-btn">Khó</button>
+        </div>
+
+        <div class="vocabulary-list">
+            <div class="word-item selected">
+                <div class="word-main">Innovation</div>
+                <div class="word-phonetic">/ˌɪn.əˈveɪ.ʃən/</div>
+                <div class="word-meaning">Sự đổi mới, sáng tạo</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Technology</div>
+                <div class="word-phonetic">/tekˈnɒl.ə.dʒi/</div>
+                <div class="word-meaning">Công nghệ</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Development</div>
+                <div class="word-phonetic">/dɪˈvel.əp.mənt/</div>
+                <div class="word-meaning">Sự phát triển</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Communication</div>
+                <div class="word-phonetic">/kəˌmjuː.nɪˈkeɪ.ʃən/</div>
+                <div class="word-meaning">Giao tiếp, truyền thông</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Environment</div>
+                <div class="word-phonetic">/ɪnˈvaɪ.rən.mənt/</div>
+                <div class="word-meaning">Môi trường</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Opportunity</div>
+                <div class="word-phonetic">/ˌɒp.əˈtʃuː.nə.ti/</div>
+                <div class="word-meaning">Cơ hội</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Achievement</div>
+                <div class="word-phonetic">/əˈtʃiːv.mənt/</div>
+                <div class="word-meaning">Thành tựu, thành tích</div>
+            </div>
+
+            <div class="word-item">
+                <div class="word-main">Experience</div>
+                <div class="word-phonetic">/ɪkˈspɪə.ri.əns/</div>
+                <div class="word-meaning">Kinh nghiệm, trải nghiệm</div>
+            </div>
+        </div>
+    </div>
     </div>
 </main>
 <%@ include file="/WEB-INF/views/footer/footer.html" %>
@@ -357,9 +403,7 @@
 
             flashcard.classList.remove("flipped");
             isFlipped = false;
-            flashProgress.textContent = `${currentIndex + 1}/${
-            vocabulary.length
-          }`;
+            flashProgress.textContent = (currentIndex + 1) + "/" + vocabulary.length;
         }
 
         function flipCard() {
@@ -398,9 +442,7 @@
             document.querySelector(
                 ".multiple-choice-container .word-phonetic"
             ).textContent = current.phonetic;
-            quizProgress.textContent = `${currentQuizIndex + 1}/${
-            vocabulary.length
-          }`;
+            quizProgress.textContent = (currentQuizIndex + 1) + "/" + vocabulary.length;
 
             // Gán lại options (demo: đáp án đúng ở A, các đáp án còn lại giả định tạm)
             const options = document.querySelectorAll(".mc-option-btn");
@@ -519,6 +561,7 @@
         const multipleChoiceContainer = document.querySelector(
             ".multiple-choice-container"
         );
+        const practiceContainer = document.querySelector(".practice-container");
 
         const flashcardBtn = document.querySelector(".flashcard-btn");
         const quizBtn = document.querySelector(".quiz-btn");
@@ -534,6 +577,7 @@
                 buttons.forEach((b) => b.classList.remove("active"));
                 flashcardContainer.style.display = "none";
                 multipleChoiceContainer.style.display = "none";
+                practiceContainer.style.display = "none";
                 listSection.style.display = "block";
                 return;
             }
@@ -545,6 +589,7 @@
             flashcardContainer.style.display = "none";
             listSection.style.display = "none";
             multipleChoiceContainer.style.display = "none";
+            practiceContainer.style.display ="none";
 
             if (mode === "flashcard") {
                 flashcardContainer.style.display = "flex";
@@ -554,6 +599,8 @@
                 updateQuiz();
             } else if (mode === "list") {
                 listSection.style.display = "block";
+            } else if (mode === "practice") {
+                practiceContainer.style.display = "block";
             }
         }
 
