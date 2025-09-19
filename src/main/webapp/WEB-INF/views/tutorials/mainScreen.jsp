@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Tutorials</title>
@@ -15,7 +16,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-<%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
+<c:choose>
+    <c:when test="${not empty sessionScope.user}">
+        <%@ include file="/WEB-INF/views/header/header_login.jsp" %>
+    </c:when>
+    <c:otherwise>
+        <%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
+    </c:otherwise>
+</c:choose>
 <%@ include file="/WEB-INF/views/header/header_category.jsp" %>
 <main class="tutorials-main">
 
@@ -133,5 +141,6 @@
     </div>
 </main>
 <%@ include file="/WEB-INF/views/footer/footer.html" %>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -1,5 +1,6 @@
 package controller;
 
+import Dao.CategoryDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -14,6 +15,7 @@ public class TutorialsServlet extends HttpServlet {
 
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("categories", CategoryDAO.getAllCategories());
         request.getRequestDispatcher("/WEB-INF/views/tutorials/mainScreen.jsp").forward(request, response);
     }
 }

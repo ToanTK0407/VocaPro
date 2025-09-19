@@ -19,7 +19,6 @@
         <%@ include file="/WEB-INF/views/header/header_unlogin.html" %>
     </c:otherwise>
 </c:choose>
-<%--<%@ include file="/WEB-INF/views/header/header_login.jsp" %>--%>
 <main>
     <section id="hero">
         <h1>VocaPro</h1>
