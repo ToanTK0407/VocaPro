@@ -310,7 +310,6 @@
                                         <i class="fas fa-volume-up me-2"></i>
                                         <span id="examWordPhonetic">/ˌɪn.əˈveɪ.ʃən/</span>
                                     </div>
-
                                     <!-- Answer Options -->
                                     <div id="examOptions">
                                         <div class="option-card" data-value="A">
