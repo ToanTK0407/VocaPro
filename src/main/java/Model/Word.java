@@ -1,5 +1,8 @@
 package Model;
 
+import java.sql.Time;
+import java.sql.Timestamp;
+
 public class Word {
     private int id;
     private String word;
@@ -10,14 +13,14 @@ public class Word {
     private String imageURL;
     private int difficultyLevel;
     private double successRate;
-    private String createdAt;
-    private String  updatedAt;
+    private Timestamp createdAt;
+    private Timestamp  updatedAt;
     private int createdBy;
 
     public Word() {
     }
 
-    public Word(int id, String word, String meaning, String ipaPronunciation, String exampleSentence, int categoryId, String imageURL, int difficultyLevel, double successRate, String createdAt, String updatedAt, int createdBy) {
+    public Word(int id, String word, String meaning, String ipaPronunciation, String exampleSentence, int categoryId, String imageURL, int difficultyLevel, double successRate, Timestamp createdAt, Timestamp updatedAt, int createdBy) {
         this.id = id;
         this.word = word;
         this.meaning = meaning;
@@ -104,19 +107,19 @@ public class Word {
         this.successRate = successRate;
     }
 
-    public String getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 
-    public String getUpdatedAt() {
+    public Timestamp getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(String updatedAt) {
+    public void setUpdatedAt(Timestamp updatedAt) {
         this.updatedAt = updatedAt;
     }
 

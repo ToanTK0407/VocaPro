@@ -1,4 +1,4 @@
-package controller;
+package controller.tutorialController;
 
 import Dao.CategoryDAO;
 import jakarta.servlet.ServletException;

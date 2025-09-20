@@ -5,8 +5,8 @@
   Time: 4:24 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Title</title>
@@ -468,60 +468,20 @@
         </div>
 
         <div class="word-filters">
-            <button class="filter-btn active">Tất cả</button>
-            <button class="filter-btn">Đã học</button>
-            <button class="filter-btn">Chưa học</button>
-            <button class="filter-btn">Khó</button>
+            <button class="filter-btn active">All</button>
+            <c:forEach var="category" items="${categories}">
+                <button class="filter-btn">${category.name}</button>
+            </c:forEach>
         </div>
 
         <div class="vocabulary-list">
-            <div class="word-item selected">
-                <div class="word-main">Innovation</div>
-                <div class="word-phonetic">/ˌɪn.əˈveɪ.ʃən/</div>
-                <div class="word-meaning">Sự đổi mới, sáng tạo</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Technology</div>
-                <div class="word-phonetic">/tekˈnɒl.ə.dʒi/</div>
-                <div class="word-meaning">Công nghệ</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Development</div>
-                <div class="word-phonetic">/dɪˈvel.əp.mənt/</div>
-                <div class="word-meaning">Sự phát triển</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Communication</div>
-                <div class="word-phonetic">/kəˌmjuː.nɪˈkeɪ.ʃən/</div>
-                <div class="word-meaning">Giao tiếp, truyền thông</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Environment</div>
-                <div class="word-phonetic">/ɪnˈvaɪ.rən.mənt/</div>
-                <div class="word-meaning">Môi trường</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Opportunity</div>
-                <div class="word-phonetic">/ˌɒp.əˈtʃuː.nə.ti/</div>
-                <div class="word-meaning">Cơ hội</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Achievement</div>
-                <div class="word-phonetic">/əˈtʃiːv.mənt/</div>
-                <div class="word-meaning">Thành tựu, thành tích</div>
-            </div>
-
-            <div class="word-item">
-                <div class="word-main">Experience</div>
-                <div class="word-phonetic">/ɪkˈspɪə.ri.əns/</div>
-                <div class="word-meaning">Kinh nghiệm, trải nghiệm</div>
-            </div>
+            <c:forEach var="word" items="${words}">
+                <div class="word-item">
+                    <div class="word-main">${word.word}</div>
+                    <div class="word-phonetic">${word.ipaPronunciation}/</div>
+                    <div class="word-meaning">${word.meaning}</div>
+                </div>
+            </c:forEach>
         </div>
     </div>
 </main>
@@ -1320,7 +1280,17 @@
         updateCard(); // để flashcard sẵn sàng
         updateQuiz(); // để quiz sẵn sàng
         updatePractice(); // để practice sẵn sàng
+
     });
+    const buttons = document.querySelectorAll(".filter-btn");
+
+    buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+            document.querySelector(".filter-btn.active")?.classList.remove("active");
+            btn.classList.add("active");
+        });
+    });
+
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
