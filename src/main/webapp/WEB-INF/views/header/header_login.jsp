@@ -20,7 +20,7 @@
         <i class="fas fa-search search-icon"></i>
     </div>
 
-    <div class="dropdown">
+    <div class="nav-item dropdown">
         <a href="#"
            class="d-flex align-items-center dropdown-toggle"
            id="userMenu"
