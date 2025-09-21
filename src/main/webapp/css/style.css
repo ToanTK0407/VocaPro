@@ -1016,6 +1016,17 @@ footer a:hover {
 .page-btn:hover {
     background-color: #2980b9;
 }
+.page-btn.disabled {
+    background-color: #ccc;
+    color: #666;
+    pointer-events: none;
+    cursor: default;
+}
+
+.page-info {
+    color: var(--color-ink);
+    align-self: center;
+}
 
 /* ===== RIGHT SIDE - FUNCTION BUTTONS ===== */
 .function-panel {

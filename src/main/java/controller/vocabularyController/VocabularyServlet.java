@@ -22,7 +22,27 @@ public class VocabularyServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action") == null ? "view" : request.getParameter("action");
         List<Category> categories = CategoryDAO.getAllCategories();
+        if (action.equals("flashcard")) {
+
+        } else if (action.equals("matching")) {
+
+        } else if (action.equals("fill")) {
+
+        } else if (action.equals("exam  ")) {
+
+        } else {
+            viewPage(request, response);
+        }
+
+
+        request.setAttribute("categories", categories);
+        request.getRequestDispatcher("/WEB-INF/views/vocabulary/mainScreen.jsp").forward(request, response);
+
+    }
+
+    public void viewPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Word> words = new ArrayList<>();
         int categoryId = request.getParameter("categoryId") == null ? 0 : Integer.parseInt(request.getParameter("categoryId"));
         request.setAttribute("categoryId", categoryId);
@@ -49,12 +69,8 @@ public class VocabularyServlet extends HttpServlet {
             request.setAttribute("pageWords", pageWords);
         }
 
-        request.setAttribute("categories", categories);
         request.setAttribute("words", words);
         request.setAttribute("currentPage", currentPage);
         request.setAttribute("totalPages", totalPages);
-
-        request.getRequestDispatcher("/WEB-INF/views/vocabulary/mainScreen.jsp").forward(request, response);
-
     }
 }

@@ -191,34 +191,44 @@
     </div>
     <%--FLASHCARD FUNCTION--%>
     <div class="flashcard-container" style="display: none">
-        <div class="flashcard-wrapper">
-            <div class="flashcard" onclick="flipCard()">
-                <div class="card-face card-front">
-                    <button class="audio-btn" onclick="playAudio()">
-                        <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="word-main">Innovation</div>
-                    <div class="word-phonetic">/ˌɪn.əˈveɪ.ʃən/</div>
-                    <div class="flip-hint">
-                        <i class="fas fa-mouse-pointer"></i>
-                        Nhấp để xem nghĩa
-                    </div>
-                </div>
+        <c:choose>
+            <c:when test="${not empty words}">
+                <c:forEach var="word" items="${words}" varStatus="loop">
+                    <div class="flashcard-wrapper" style="${loop.first ? 'display: block;' : 'display: none;'}">
+                        <div class="flashcard" onclick="flipCard()">
+                            <div class="card-face card-front">
+                                <button class="audio-btn" onclick="playAudio()">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <div class="word-main">${word.word}</div>
+                                <div class="word-phonetic">${word.ipaPronunciation}</div>
+                                <div class="flip-hint">
+                                    <i class="fas fa-mouse-pointer"></i>
+                                    Nhấp để xem nghĩa
+                                </div>
+                            </div>
 
-                <div class="card-face card-back">
-                    <button class="audio-btn" onclick="playAudio()">
-                        <i class="fas fa-volume-up"></i>
-                    </button>
-                    <div class="word-main">Innovation</div>
-                    <div class="word-phonetic">/ˌɪn.əˈveɪ.ʃən/</div>
-                    <div class="word-meaning">Sự đổi mới, sáng tạo</div>
-                    <div class="flip-hint">
-                        <i class="fas fa-mouse-pointer"></i>
-                        Nhấp để quay lại
+                            <div class="card-face card-back">
+                                <button class="audio-btn" onclick="playAudio()">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <div class="word-main">${word.word}</div>
+                                <div class="word-phonetic">${word.ipaPronunciation}</div>
+                                <div class="word-meaning">${word.meaning}</div>
+                                <div class="flip-hint">
+                                    <i class="fas fa-mouse-pointer"></i>
+                                    Nhấp để quay lại
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <div>There is no words in this category now!</div>
+            </c:otherwise>
+        </c:choose>
+
 
         <div class="navigation-controls">
             <button class="nav-btn prev-btn">
@@ -468,37 +478,73 @@
         </div>
 
         <div class="word-filters">
-            <a href="?categoryId=0" class="filter-btn active">All</a>
+            <a href="?categoryId=0" class="filter-btn ${categoryId == 0 ? 'active' : ''}">All</a>
             <c:forEach var="category" items="${categories}">
-                <a href="?categoryId=${category.id}#wordList" class="filter-btn">${category.name}</a>
+                <a href="?categoryId=${category.id}#wordList"
+                   class="filter-btn ${categoryId == category.id ? 'active' : ''}">${category.name}</a>
             </c:forEach>
         </div>
 
         <div class="vocabulary-list">
-            <c:forEach var="word" items="${pageWords}">
-                <div class="word-item">
-                    <div class="word-main">${word.word}</div>
-                    <div class="word-phonetic">${word.ipaPronunciation}</div>
-                    <div class="word-meaning">${word.meaning}</div>
-                </div>
-            </c:forEach>
+            <c:choose>
+
+                <c:when test="${not empty pageWords}">
+                    <c:forEach var="word" items="${pageWords}">
+                        <div class="word-item">
+                            <div class="word-main">${word.word}</div>
+                            <div class="word-phonetic">${word.ipaPronunciation}</div>
+                            <div class="word-meaning">${word.meaning}</div>
+                        </div>
+                    </c:forEach>
+                </c:when>
+                <c:otherwise>
+                    <div>There is no words in this category now!</div>
+                </c:otherwise>
+            </c:choose>
         </div>
 
         <!-- Pagination buttons -->
         <div class="pagination">
-            <c:if test="${currentPage > 1}">
-                <a href="?page=${currentPage - 1}&categoryId=${categoryId}#wordList" class="page-btn">Prev</a>
-            </c:if>
-            <c:if test="${currentPage < totalPages}">
-                <a href="?page=${currentPage + 1}&categoryId=${categoryId}#wordList" class="page-btn">Next</a>
-            </c:if>
+            <!-- Prev button -->
+            <c:choose>
+                <c:when test="${currentPage > 1}">
+                    <a href="?page=${currentPage - 1}&categoryId=${categoryId}#wordList" class="page-btn">Prev</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="page-btn disabled">Prev</span>
+                </c:otherwise>
+            </c:choose>
+
+            <!-- Page info -->
+            <span class="page-info">
+                ${currentPage} / ${totalPages}
+            </span>
+
+            <!-- Next button -->
+            <c:choose>
+                <c:when test="${currentPage < totalPages}">
+                    <a href="?page=${currentPage + 1}&categoryId=${categoryId}#wordList" class="page-btn">Next</a>
+                </c:when>
+                <c:otherwise>
+                    <span class="page-btn disabled">Next</span>
+                </c:otherwise>
+            </c:choose>
         </div>
     </div>
 </main>
 <%@ include file="/WEB-INF/views/footer/footer.html" %>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const vocabulary = ${words};
+
+        const vocabulary = [
+            <c:forEach var="w" items="${words}" varStatus="loop">
+            {
+                word: "${w.word}",
+                phonetic: "${w.ipaPronunciation}",
+                meaning: "${w.meaning}"
+            }<c:if test="${!loop.last}">, </c:if>
+            </c:forEach>
+        ];
 
         // ==========================
         // GLOBAL VARIABLES
