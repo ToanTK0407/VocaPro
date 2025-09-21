@@ -29,6 +29,25 @@ public class WordDAO {
         return words;
     }
 
+    public List<Word> getWordsByCategory(int categoryId) {
+        List<Word> words = new ArrayList<>();
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement statement = conn.prepareStatement("SELECT * FROM Words JOIN dbo.Categories C on Words.category_id = C.category_id WHERE Words.category_id = ?");
+        ) {
+            statement.setInt(1, categoryId);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Word word = retrieveWord(rs);
+                words.add(word);
+            }
+            rs.close();
+            return words;
+        } catch (SQLException ex) {
+            System.out.printf(ex.getMessage());
+        }
+        return words;
+    }
+
     public static Word retrieveWord(ResultSet rs) throws SQLException {
         Word word = new Word();
         word.setId(rs.getInt("word_id"));

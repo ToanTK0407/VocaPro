@@ -897,7 +897,7 @@ footer a:hover {
 
 .vocabulary-list-section h2 {
     color: var(--color-ink);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     font-size: 1.5rem;
     display: flex;
     align-items: center;
@@ -905,7 +905,7 @@ footer a:hover {
 }
 
 .vocabulary-search {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .vocabulary-search input {
@@ -926,7 +926,7 @@ footer a:hover {
 .word-filters {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     flex-wrap: wrap;
 }
 
@@ -939,6 +939,7 @@ footer a:hover {
     font-size: 0.8rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    text-decoration: none;
 }
 
 .filter-btn.active,
@@ -993,6 +994,27 @@ footer a:hover {
 .word-item .word-meaning {
     font-size: 0.9rem;
     font-style: italic;
+}
+
+.pagination {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.page-btn {
+    padding: 8px 16px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.page-btn:hover {
+    background-color: #2980b9;
 }
 
 /* ===== RIGHT SIDE - FUNCTION BUTTONS ===== */

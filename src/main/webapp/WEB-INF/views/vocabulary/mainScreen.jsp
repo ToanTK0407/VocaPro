@@ -5,7 +5,7 @@
   Time: 4:24 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
@@ -221,13 +221,13 @@
         </div>
 
         <div class="navigation-controls">
-            <button class="nav-btn prev-btn" >
+            <button class="nav-btn prev-btn">
                 <i class="fas fa-chevron-left"></i> Previous
             </button>
             <div class="progress-info">
                 <span class="progress-text">1/8</span>
             </div>
-            <button class="nav-btn next-btn" >
+            <button class="nav-btn next-btn">
                 Next <i class="fas fa-chevron-right"></i>
             </button>
         </div>
@@ -262,7 +262,7 @@
         </div>
 
         <div class="navigation-controls">
-            <button class="nav-btn prev-btn" >
+            <button class="nav-btn prev-btn">
                 <i class="fas fa-chevron-left"></i> Previous
             </button>
             <div class="progress-info">
@@ -460,7 +460,7 @@
     </div>
 
 
-    <div class="vocabulary-list-section" style="display: block">
+    <div class="vocabulary-list-section" id="wordList" style="display: block">
         <h2><i class="fas fa-book"></i> List of Words</h2>
 
         <div class="vocabulary-search">
@@ -468,68 +468,37 @@
         </div>
 
         <div class="word-filters">
-            <button class="filter-btn active">All</button>
+            <a href="?categoryId=0" class="filter-btn active">All</a>
             <c:forEach var="category" items="${categories}">
-                <button class="filter-btn">${category.name}</button>
+                <a href="?categoryId=${category.id}#wordList" class="filter-btn">${category.name}</a>
             </c:forEach>
         </div>
 
         <div class="vocabulary-list">
-            <c:forEach var="word" items="${words}">
+            <c:forEach var="word" items="${pageWords}">
                 <div class="word-item">
                     <div class="word-main">${word.word}</div>
-                    <div class="word-phonetic">${word.ipaPronunciation}/</div>
+                    <div class="word-phonetic">${word.ipaPronunciation}</div>
                     <div class="word-meaning">${word.meaning}</div>
                 </div>
             </c:forEach>
+        </div>
+
+        <!-- Pagination buttons -->
+        <div class="pagination">
+            <c:if test="${currentPage > 1}">
+                <a href="?page=${currentPage - 1}&categoryId=${categoryId}#wordList" class="page-btn">Prev</a>
+            </c:if>
+            <c:if test="${currentPage < totalPages}">
+                <a href="?page=${currentPage + 1}&categoryId=${categoryId}#wordList" class="page-btn">Next</a>
+            </c:if>
         </div>
     </div>
 </main>
 <%@ include file="/WEB-INF/views/footer/footer.html" %>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const vocabulary = [
-            {
-                word: "Innovation",
-                phonetic: "/ˌɪn.əˈveɪ.ʃən/",
-                meaning: "Sự đổi mới, sáng tạo",
-            },
-            {
-                word: "Technology",
-                phonetic: "/tekˈnɒl.ə.dʒi/",
-                meaning: "Công nghệ",
-            },
-            {
-                word: "Development",
-                phonetic: "/dɪˈvel.əp.mənt/",
-                meaning: "Sự phát triển",
-            },
-            {
-                word: "Communication",
-                phonetic: "/kəˌmjuː.nɪˈkeɪ.ʃən/",
-                meaning: "Giao tiếp, truyền thông",
-            },
-            {
-                word: "Environment",
-                phonetic: "/ɪnˈvaɪ.rən.mənt/",
-                meaning: "Môi trường",
-            },
-            {
-                word: "Opportunity",
-                phonetic: "/ˌɒp.əˈtʃuː.nə.ti/",
-                meaning: "Cơ hội",
-            },
-            {
-                word: "Achievement",
-                phonetic: "/əˈtʃiːv.mənt/",
-                meaning: "Thành tựu, thành tích",
-            },
-            {
-                word: "Experience",
-                phonetic: "/ɪkˈspɪə.ri.əns/",
-                meaning: "Kinh nghiệm, trải nghiệm",
-            },
-        ];
+    document.addEventListener("DOMContentLoaded", function () {
+        const vocabulary = ${words};
 
         // ==========================
         // GLOBAL VARIABLES
@@ -734,7 +703,7 @@
                 checkPracticeAnswer();
 
                 // Delay moving to next question to show feedback
-                setTimeout(function() {
+                setTimeout(function () {
                     proceedToNext();
                 }, 1500);
             } else {
@@ -752,7 +721,7 @@
         }
 
         function finishPractice() {
-            const correctAnswers = practiceAnswers.filter(function(answer, index) {
+            const correctAnswers = practiceAnswers.filter(function (answer, index) {
                 return answer && answer.toLowerCase().trim() === vocabulary[index].word.toLowerCase();
             }).length;
 
@@ -814,11 +783,13 @@
 
             grid.innerHTML = '';
 
-            vocabulary.forEach(function(_, index) {
+            vocabulary.forEach(function (_, index) {
                 const dot = document.createElement('div');
                 dot.className = 'question-dot';
                 dot.textContent = index + 1;
-                dot.onclick = function() { navigateToQuestion(index); };
+                dot.onclick = function () {
+                    navigateToQuestion(index);
+                };
                 grid.appendChild(dot);
             });
         }
@@ -839,7 +810,7 @@
 
             // Update options
             const optionCards = document.querySelectorAll('.exam-container .option-card');
-            optionCards.forEach(function(card, index) {
+            optionCards.forEach(function (card, index) {
                 if (current.options && current.options[index]) {
                     const optionText = card.querySelector('.option-text');
                     if (optionText) {
@@ -892,7 +863,7 @@
 
         function updateQuestionGrid() {
             const dots = document.querySelectorAll('.question-dot');
-            dots.forEach(function(dot, index) {
+            dots.forEach(function (dot, index) {
                 dot.className = 'question-dot';
 
                 if (index === currentExamIndex) {
@@ -908,7 +879,9 @@
         }
 
         function updateStats() {
-            const answeredCount = examAnswers.filter(function(answer) { return answer !== null; }).length;
+            const answeredCount = examAnswers.filter(function (answer) {
+                return answer !== null;
+            }).length;
             const flaggedCount = flaggedQuestions.size;
             const remainingCount = vocabulary.length - answeredCount;
 
@@ -924,7 +897,7 @@
         function startTimer() {
             if (timerInterval) clearInterval(timerInterval);
 
-            timerInterval = setInterval(function() {
+            timerInterval = setInterval(function () {
                 examTimer--;
 
                 const minutes = Math.floor(examTimer / 60);
@@ -950,9 +923,11 @@
         function bindExamEvents() {
             // Option card events
             const optionCards = document.querySelectorAll('.exam-container .option-card');
-            optionCards.forEach(function(card, index) {
-                card.addEventListener('click', function() {
-                    document.querySelectorAll('.exam-container .option-card').forEach(function(c) { c.classList.remove('selected'); });
+            optionCards.forEach(function (card, index) {
+                card.addEventListener('click', function () {
+                    document.querySelectorAll('.exam-container .option-card').forEach(function (c) {
+                        c.classList.remove('selected');
+                    });
                     card.classList.add('selected');
                     examAnswers[currentExamIndex] = index;
                     updateStats();
@@ -967,7 +942,7 @@
             const submitBtn = document.getElementById('submitExamBtn');
 
             if (prevBtn) {
-                prevBtn.addEventListener('click', function() {
+                prevBtn.addEventListener('click', function () {
                     if (currentExamIndex > 0) {
                         currentExamIndex--;
                         updateExamDisplay();
@@ -976,7 +951,7 @@
             }
 
             if (nextBtn) {
-                nextBtn.addEventListener('click', function() {
+                nextBtn.addEventListener('click', function () {
                     if (currentExamIndex < vocabulary.length - 1) {
                         currentExamIndex++;
                         updateExamDisplay();
@@ -987,7 +962,7 @@
             }
 
             if (flagBtn) {
-                flagBtn.addEventListener('click', function() {
+                flagBtn.addEventListener('click', function () {
                     if (flaggedQuestions.has(currentExamIndex)) {
                         flaggedQuestions.delete(currentExamIndex);
                     } else {
@@ -1005,7 +980,7 @@
             // Results modal events
             const retakeBtn = document.getElementById('retakeExamBtn');
             if (retakeBtn) {
-                retakeBtn.addEventListener('click', function() {
+                retakeBtn.addEventListener('click', function () {
                     resetExam();
                     const modal = bootstrap.Modal.getInstance(document.getElementById('examResultsModal'));
                     if (modal) modal.hide();
@@ -1018,14 +993,18 @@
 
             // Calculate results
             let correctCount = 0;
-            examAnswers.forEach(function(answer, index) {
+            examAnswers.forEach(function (answer, index) {
                 if (answer !== null && answer === vocabulary[index].correct) {
                     correctCount++;
                 }
             });
 
-            const incorrectCount = examAnswers.filter(function(answer) { return answer !== null; }).length - correctCount;
-            const unansweredCount = examAnswers.filter(function(answer) { return answer === null; }).length;
+            const incorrectCount = examAnswers.filter(function (answer) {
+                return answer !== null;
+            }).length - correctCount;
+            const unansweredCount = examAnswers.filter(function (answer) {
+                return answer === null;
+            }).length;
             const percentage = Math.round((correctCount / vocabulary.length) * 100);
 
             // Update results modal
@@ -1073,11 +1052,11 @@
 
         // Flashcard events
         flashcard.addEventListener("click", flipCard);
-        flashcard.querySelectorAll(".audio-btn").forEach(function(btn) {
-            btn.addEventListener("click", function(e) {
+        flashcard.querySelectorAll(".audio-btn").forEach(function (btn) {
+            btn.addEventListener("click", function (e) {
                 e.stopPropagation();
                 btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                setTimeout(function() {
+                setTimeout(function () {
                     btn.innerHTML = '<i class="fas fa-volume-up"></i>';
                     console.log("Playing audio:", vocabulary[currentIndex].word);
                 }, 1000);
@@ -1111,25 +1090,25 @@
 
         if (practiceAnswerInput) {
             // Check answer on Enter key
-            practiceAnswerInput.addEventListener("keypress", function(e) {
+            practiceAnswerInput.addEventListener("keypress", function (e) {
                 if (e.key === "Enter" && !practiceAnswerInput.disabled) {
                     checkPracticeAnswer();
                 }
             });
 
             // Save answer as user types
-            practiceAnswerInput.addEventListener("input", function() {
+            practiceAnswerInput.addEventListener("input", function () {
                 practiceAnswers[currentPracticeIndex] = practiceAnswerInput.value.trim();
             });
 
             // Auto-focus when practice mode is activated
-            practiceAnswerInput.addEventListener("focus", function() {
+            practiceAnswerInput.addEventListener("focus", function () {
                 practiceAnswerInput.select();
             });
         }
 
         // Keyboard navigation
-        document.addEventListener("keydown", function(e) {
+        document.addEventListener("keydown", function (e) {
             const flashcardVisible = flashcard.closest(".flashcard-container").style.display !== "none";
             const quizVisible = document.querySelector(".multiple-choice-container").style.display !== "none";
             const examVisible = document.querySelector(".exam-container").style.display !== "none";
@@ -1202,7 +1181,9 @@
         function switchMode(mode, clickedBtn) {
             if (currentMode === mode) {
                 currentMode = null;
-                buttons.forEach(function(b) { b.classList.remove("active"); });
+                buttons.forEach(function (b) {
+                    b.classList.remove("active");
+                });
                 flashcardContainer.style.display = "none";
                 multipleChoiceContainer.style.display = "none";
                 practiceContainer.style.display = "none";
@@ -1218,7 +1199,9 @@
             }
 
             currentMode = mode;
-            buttons.forEach(function(b) { b.classList.remove("active"); });
+            buttons.forEach(function (b) {
+                b.classList.remove("active");
+            });
             clickedBtn.classList.add("active");
 
             flashcardContainer.style.display = "none";
@@ -1239,7 +1222,7 @@
                 practiceContainer.style.display = "block";
                 updatePractice();
                 // Auto-focus input field
-                setTimeout(function() {
+                setTimeout(function () {
                     if (practiceAnswerInput) {
                         practiceAnswerInput.focus();
                     }
@@ -1251,24 +1234,26 @@
             }
         }
 
-        flashcardBtn.addEventListener("click", function() {
+        flashcardBtn.addEventListener("click", function () {
             switchMode("flashcard", flashcardBtn);
         });
-        quizBtn.addEventListener("click", function() {
+        quizBtn.addEventListener("click", function () {
             switchMode("quiz", quizBtn);
         });
-        practiceBtn.addEventListener("click", function() {
+        practiceBtn.addEventListener("click", function () {
             switchMode("practice", practiceBtn);
         });
-        testBtn.addEventListener("click", function() {
+        testBtn.addEventListener("click", function () {
             switchMode("test", testBtn);
         });
 
         // Word list item selection
         const wordItems = document.querySelectorAll(".word-item");
-        wordItems.forEach(function(item, index) {
-            item.addEventListener("click", function() {
-                wordItems.forEach(function(w) { w.classList.remove("selected"); });
+        wordItems.forEach(function (item, index) {
+            item.addEventListener("click", function () {
+                wordItems.forEach(function (w) {
+                    w.classList.remove("selected");
+                });
                 item.classList.add("selected");
                 currentIndex = index;
                 updateCard();
@@ -1288,6 +1273,7 @@
         btn.addEventListener("click", () => {
             document.querySelector(".filter-btn.active")?.classList.remove("active");
             btn.classList.add("active");
+
         });
     });
 
