@@ -1116,14 +1116,14 @@ footer a:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 1rem 2rem 0;
+    padding: 1.5rem 2rem 0;
 }
 
 .flashcard-wrapper {
     perspective: 1000px;
     width: 100%;
-    max-width: 400px;
-    height: 275px;
+    max-width: 500px;
+    height: 300px;
 }
 
 .flashcard {

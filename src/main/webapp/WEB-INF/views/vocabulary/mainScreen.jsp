@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -85,117 +87,116 @@
                 </div>
             </div>
         </div>
-        <%--MULTIPLE CHOICE FUNCTION--%>
-        <div
-                class="multiple-choice-container"
-                style="display: none; min-width: 800px"
-        >
-            <div class="container-fluid h-100">
-                <div class="row h-100 align-items-center">
-                    <!-- Left Navigation Panel -->
 
-                    <div class="col-10">
-                        <div class="mc-question-panel">
-                            <div class="question-header text-center mb-4">
-                                <h3 class="question-title">
-                                    <i class="fas fa-question-circle text-primary"></i>
-                                    What is the meaning of:
-                                </h3>
-                                <div class="mc-word-display">
-                                    <span class="word-text">Innovation</span>
+
+    </div>
+    <%--MULTIPLE CHOICE FUNCTION--%>
+    <div class="multiple-choice-container" style="display: none; min-width: 800px">
+        <div class="container-fluid h-100">
+            <div class="row h-100 align-items-center">
+                <!-- Left Navigation Panel -->
+
+                <div class="col-10">
+                    <div class="mc-question-panel">
+                        <div class="question-header text-center mb-4">
+                            <h3 class="question-title">
+                                <i class="fas fa-question-circle text-primary"></i>
+                                What is the meaning of:
+                            </h3>
+                            <div class="mc-word-display">
+                                <span class="word-text">Innovation</span>
+                                <button
+                                        class="btn btn-outline-primary btn-sm ms-2 audio-btn-quiz"
+                                >
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                            </div>
+                            <div class="word-phonetic text-muted">/ˌɪn.əˈveɪ.ʃən/</div>
+                        </div>
+
+                        <div class="mc-options-grid">
+                            <div class="row g-3">
+                                <div class="col-6">
                                     <button
-                                            class="btn btn-outline-primary btn-sm ms-2 audio-btn-quiz"
+                                            class="btn btn-outline-secondary w-100 mc-option-btn"
+                                            data-answer="correct"
                                     >
-                                        <i class="fas fa-volume-up"></i>
+                                        <span class="option-letter">A</span>
+                                        <span class="option-text">Sự đổi mới, sáng tạo</span>
                                     </button>
                                 </div>
-                                <div class="word-phonetic text-muted">/ˌɪn.əˈveɪ.ʃən/</div>
-                            </div>
-
-                            <div class="mc-options-grid">
-                                <div class="row g-3">
-                                    <div class="col-6">
-                                        <button
-                                                class="btn btn-outline-secondary w-100 mc-option-btn"
-                                                data-answer="correct"
-                                        >
-                                            <span class="option-letter">A</span>
-                                            <span class="option-text">Sự đổi mới, sáng tạo</span>
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button
-                                                class="btn btn-outline-secondary w-100 mc-option-btn"
-                                                data-answer="wrong"
-                                        >
-                                            <span class="option-letter">B</span>
-                                            <span class="option-text">Công nghệ</span>
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button
-                                                class="btn btn-outline-secondary w-100 mc-option-btn"
-                                                data-answer="wrong"
-                                        >
-                                            <span class="option-letter">C</span>
-                                            <span class="option-text">Môi trường</span>
-                                        </button>
-                                    </div>
-                                    <div class="col-6">
-                                        <button
-                                                class="btn btn-outline-secondary w-100 mc-option-btn"
-                                                data-answer="wrong"
-                                        >
-                                            <span class="option-letter">D</span>
-                                            <span class="option-text">Thành tựu</span>
-                                        </button>
-                                    </div>
+                                <div class="col-6">
+                                    <button
+                                            class="btn btn-outline-secondary w-100 mc-option-btn"
+                                            data-answer="wrong"
+                                    >
+                                        <span class="option-letter">B</span>
+                                        <span class="option-text">Công nghệ</span>
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button
+                                            class="btn btn-outline-secondary w-100 mc-option-btn"
+                                            data-answer="wrong"
+                                    >
+                                        <span class="option-letter">C</span>
+                                        <span class="option-text">Môi trường</span>
+                                    </button>
+                                </div>
+                                <div class="col-6">
+                                    <button
+                                            class="btn btn-outline-secondary w-100 mc-option-btn"
+                                            data-answer="wrong"
+                                    >
+                                        <span class="option-letter">D</span>
+                                        <span class="option-text">Thành tựu</span>
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Right Navigation Panel -->
-                    <div class="col-2">
-                        <div class="mc-nav-panel right-panel">
-                            <div class="nav-section">
-                                <h6 class="nav-title">
-                                    <i class="fas fa-cog"></i> Actions
-                                </h6>
-                                <button class="btn btn-outline-info btn-sm w-100 mb-2">
-                                    <i class="fas fa-flag"></i> Flag
-                                </button>
-                                <button class="btn btn-outline-secondary btn-sm w-100">
-                                    <i class="fas fa-times"></i> Skip
-                                </button>
-                            </div>
+                <!-- Right Navigation Panel -->
+                <div class="col-2">
+                    <div class="mc-nav-panel right-panel">
+                        <div class="nav-section">
+                            <h6 class="nav-title">
+                                <i class="fas fa-cog"></i> Actions
+                            </h6>
+                            <button class="btn btn-outline-info btn-sm w-100 mb-2">
+                                <i class="fas fa-flag"></i> Flag
+                            </button>
+                            <button class="btn btn-outline-secondary btn-sm w-100">
+                                <i class="fas fa-times"></i> Skip
+                            </button>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Bottom Navigation -->
-                <div class="navigation-controls">
-                    <button class="nav-btn prev-btn" onclick="previousCard()">
-                        <i class="fas fa-chevron-left"></i> Previous
-                    </button>
-                    <div class="progress-info">
-                        <span class="progress-text">1/8</span>
-                    </div>
-                    <button class="nav-btn next-btn" onclick="nextCard()">
-                        Next <i class="fas fa-chevron-right"></i>
-                    </button>
+            <!-- Bottom Navigation -->
+            <div class="navigation-controls">
+                <button class="nav-btn prev-btn" onclick="previousCard()">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="progress-info">
+                    <span class="progress-text">1/8</span>
                 </div>
+                <button class="nav-btn next-btn" onclick="nextCard()">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
             </div>
         </div>
-
     </div>
     <%--FLASHCARD FUNCTION--%>
     <div class="flashcard-container" style="display: none">
         <c:choose>
+
             <c:when test="${not empty words}">
                 <c:forEach var="word" items="${words}" varStatus="loop">
                     <div class="flashcard-wrapper" style="${loop.first ? 'display: block;' : 'display: none;'}">
-                        <div class="flashcard" onclick="flipCard()">
+                        <div class="flashcard" onclick="flipCard(this)">
                             <div class="card-face card-front">
                                 <button class="audio-btn" onclick="playAudio()">
                                     <i class="fas fa-volume-up"></i>
@@ -229,15 +230,14 @@
             </c:otherwise>
         </c:choose>
 
-
         <div class="navigation-controls">
-            <button class="nav-btn prev-btn">
+            <button class="nav-btn prevCard-btn" onclick="previousCard()">
                 <i class="fas fa-chevron-left"></i> Previous
             </button>
             <div class="progress-info">
-                <span class="progress-text">1/8</span>
+                <span class="progress-text"></span>
             </div>
-            <button class="nav-btn next-btn">
+            <button class="nav-btn nextCard-btn" onclick="nextCard()">
                 Next <i class="fas fa-chevron-right"></i>
             </button>
         </div>
@@ -252,34 +252,44 @@
             <p class="practice-subtitle">Translate the Vietnamese meaning to English</p>
         </div>
 
-        <div class="question-card">
-            <div class="question-number">Question 1</div>
-            <button class="flag-btn" onclick="toggleFlag()" title="Flag this question">
-                <i class="fas fa-flag"></i>
-            </button>
+        <c:choose>
+            <c:when test="${not empty words}">
+                <c:forEach var="word" items="${words}" varStatus="loop">
+                    <div class="question-card" style=${loop.first ? '"display:block"' : '"display:none"'}>
+                        <div class="question-number">Question ${loop.index+1}</div>
+                        <button class="flag-btn" onclick="toggleFlag()" title="Flag this question">
+                            <i class="fas fa-flag"></i>
+                        </button>
 
-            <div class="question-content">
-                <h3 class="question-text">Sự đổi mới, sáng tạo</h3>
-                <p class="question-hint">Enter the English word for this Vietnamese meaning</p>
-                <div class="answer-feedback"></div>
-                <input
-                        type="text"
-                        class="answer-input"
-                        placeholder="Type your answer here..."
-                        autocomplete="off"
-                />
-            </div>
-        </div>
+                        <div class="question-content">
+                            <h3 class="question-text">${word.meaning}</h3>
+                            <p class="question-hint">Enter the English word for this Vietnamese meaning</p>
+                            <div class="answer-feedback"></div>
+                            <input
+                                    type="text"
+                                    class="answer-input"
+                                    placeholder="Type your answer here..."
+                                    autocomplete="off"
+                            />
+                        </div>
+                    </div>
+                </c:forEach>
+            </c:when>
+            <c:otherwise>
+                <div>There is no word in there now!</div>
+            </c:otherwise>
+        </c:choose>
+
 
         <div class="navigation-controls">
-            <button class="nav-btn prev-btn">
-                <i class="fas fa-chevron-left"></i> Previous
+            <button class="nav-btn prevPrac-btn">
+                <i class="fas fa-chevron-left" onclick="previousPractice()"></i> Previous
             </button>
             <div class="progress-info">
-                <span class="progress-text">1/8</span>
+                <span class="progress-question-text">1/8</span>
             </div>
-            <button class="nav-btn next-btn">
-                Next <i class="fas fa-chevron-right"></i>
+            <button class="nav-btn nextPrac-btn">
+                Next <i class="fas fa-chevron-right" onclick="nextPractice()"></i>
             </button>
         </div>
     </div>
@@ -536,133 +546,175 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        const vocabulary = [
-            <c:forEach var="w" items="${words}" varStatus="loop">
-            {
-                word: "${w.word}",
-                phonetic: "${w.ipaPronunciation}",
-                meaning: "${w.meaning}"
-            }<c:if test="${!loop.last}">, </c:if>
-            </c:forEach>
-        ];
+        <%--const vocabulary = [--%>
+        <%--    <c:forEach var="w" items="${words}" varStatus="loop">--%>
+        <%--    {--%>
+        <%--        word: "${w.word}",--%>
+        <%--        phonetic: "${w.ipaPronunciation}",--%>
+        <%--        meaning: "${w.meaning}"--%>
+        <%--    }<c:if test="${!loop.last}">, </c:if>--%>
+        <%--    </c:forEach>--%>
+        <%--];--%>
 
         // ==========================
         // GLOBAL VARIABLES
         // ==========================
         let currentIndex = 0;
         let currentMode = null;
+        let total = ${fn:length(words)};
+
 
         // ==========================
         // FLASHCARD LOGIC
         // ==========================
         let isFlipped = false;
-        const flashcard = document.querySelector(".flashcard");
-        const cardFront = flashcard.querySelector(".card-front");
-        const cardBack = flashcard.querySelector(".card-back");
+        const flashcards = document.querySelectorAll(".flashcard-wrapper");
         const flashProgress = document.querySelector(".flashcard-container .progress-text");
+        const prevCardBtn = document.querySelector(".prevCard-btn");
+        const nextCardBtn = document.querySelector(".nextCard-btn");
 
         function updateCard() {
-            const current = vocabulary[currentIndex];
-            cardFront.querySelector(".word-main").textContent = current.word;
-            cardFront.querySelector(".word-phonetic").textContent = current.phonetic;
-            cardBack.querySelector(".word-main").textContent = current.word;
-            cardBack.querySelector(".word-phonetic").textContent = current.phonetic;
-            cardBack.querySelector(".word-meaning").textContent = current.meaning;
+            flashcards.forEach(card => card.style.display = "none");
+            console.log(currentIndex);
+            if (flashcards[currentIndex]) {
+                flashcards[currentIndex].style.display = "block";
+            }
 
-            flashcard.classList.remove("flipped");
+            const flashcard = flashcards[currentIndex]?.querySelector(".flashcard");
+            if (flashcard) {
+                flashcard.classList.remove("flipped");
+            }
             isFlipped = false;
-            flashProgress.textContent = (currentIndex + 1) + "/" + vocabulary.length;
+
+            flashProgress.textContent = (currentIndex + 1) + "/" + total;
+            updateButtonStates();
         }
 
-        function flipCard() {
-            flashcard.classList.toggle("flipped");
-            isFlipped = !isFlipped;
+        function updateButtonStates() {
+            if (prevCardBtn) prevCardBtn.disabled = currentIndex === 0;
+            if (nextCardBtn) nextCardBtn.disabled = currentIndex === total - 1;
         }
 
-        function previousCard() {
+        window.flipCard = function(flashcard) {
+            if (flashcard) {
+                flashcard.classList.toggle("flipped");
+                isFlipped = !isFlipped;
+            }
+        };
+
+        window.previousCard = function() {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateCard();
             }
-        }
+        };
 
-        function nextCard() {
-            if (currentIndex < vocabulary.length - 1) {
+        window.nextCard = function() {
+            if (currentIndex < total - 1) {
                 currentIndex++;
                 updateCard();
             } else {
                 alert("🎉 Bạn đã học hết từ vựng!");
             }
-        }
+        };
+
+        window.playAudio = function(event, word) {
+            if (event) event.stopPropagation();
+
+            if ('speechSynthesis' in window && word) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8;
+                speechSynthesis.speak(utterance);
+            }
+        };
+
 
         // ==========================
         // QUIZ (MULTIPLE CHOICE) LOGIC
         // ==========================
-        let currentQuizIndex = 0;
-        const quizProgress = document.querySelector(".multiple-choice-container .progress-text");
+        // let currentQuizIndex = 0;
+        // const quizProgress = document.querySelector(".multiple-choice-container .progress-text");
 
-        function updateQuiz() {
-            const current = vocabulary[currentQuizIndex];
-            document.querySelector(".mc-word-display .word-text").textContent = current.word;
-            document.querySelector(".multiple-choice-container .word-phonetic").textContent = current.phonetic;
-            quizProgress.textContent = (currentQuizIndex + 1) + "/" + vocabulary.length;
 
-            // Gán lại options (demo: đáp án đúng ở A, các đáp án còn lại giả định tạm)
-            const options = document.querySelectorAll(".mc-option-btn");
-            options[0].dataset.answer = "correct";
-            options[0].querySelector(".option-text").textContent = current.meaning;
+        // function updateQuiz() {
+        //     questionCards.forEach(prac => prac.style.display = "none");
+        //
+        //     if (questionCards[currentQuizIndex]){
+        //         questionCards[currentQuizIndex].style.display = "block";
+        //     }
+        //
+        //
+        //     const questionCard = questionCards[currentQuizIndex]?.querySelector(".question-card");
+        //     updateQuestionButtonStates();
+        //
+        //     quizProgress.textContent = (currentQuizIndex + 1) + "/" + vocabulary.length;
+        //
+        //     // Gán lại options (demo: đáp án đúng ở A, các đáp án còn lại giả định tạm)
+        //     const options = document.querySelectorAll(".mc-option-btn");
+        //     options[0].dataset.answer = "correct";
+        //     options[0].querySelector(".option-text").textContent = current.meaning;
+        //
+        //     options[1].dataset.answer = "wrong";
+        //     options[1].querySelector(".option-text").textContent = "Nhiễu 1";
+        //
+        //     options[2].dataset.answer = "wrong";
+        //     options[2].querySelector(".option-text").textContent = "Nhiễu 2";
+        //
+        //     options[3].dataset.answer = "wrong";
+        //     options[3].querySelector(".option-text").textContent = "Nhiễu 3";
+        // }
 
-            options[1].dataset.answer = "wrong";
-            options[1].querySelector(".option-text").textContent = "Nhiễu 1";
-
-            options[2].dataset.answer = "wrong";
-            options[2].querySelector(".option-text").textContent = "Nhiễu 2";
-
-            options[3].dataset.answer = "wrong";
-            options[3].querySelector(".option-text").textContent = "Nhiễu 3";
-        }
-
-        function prevQuiz() {
-            if (currentQuizIndex > 0) {
-                currentQuizIndex--;
-                updateQuiz();
-            }
-        }
-
-        function nextQuiz() {
-            if (currentQuizIndex < vocabulary.length - 1) {
-                currentQuizIndex++;
-                updateQuiz();
-            } else {
-                alert("🎉 Bạn đã làm hết câu hỏi!");
-            }
-        }
+        // window.previousPractice = function () {
+        //     if (currentQuizIndex > 0) {
+        //         currentQuizIndex--;
+        //         updateQuiz();
+        //     }
+        // }
+        //
+        // window.nextPractice = function () {
+        //     if (currentQuizIndex < total - 1) {
+        //         currentQuizIndex++;
+        //         updateQuiz();
+        //     } else {
+        //         alert("🎉 Bạn đã làm hết câu hỏi!");
+        //     }
+        // }
+        //
 
         // ==========================
         // PRACTICE LOGIC
         // ==========================
         let currentPracticeIndex = 0;
-        let practiceAnswers = new Array(vocabulary.length).fill(null);
+        const questionCards = document.querySelectorAll(".question-card");
+        const prevPracBtn = document.querySelector(".prevPrac-btn");
+        const nextPracBtn = document.querySelector(".nextPrac-btn");
+
         let practiceFlags = new Set();
         let practiceScore = 0;
 
         function updatePractice() {
-            const current = vocabulary[currentPracticeIndex];
-            const practiceProgress = document.querySelector(".practice-container .progress-text");
-            const questionNumber = document.querySelector(".practice-container .question-number");
-            const questionText = document.querySelector(".practice-container .question-text");
-            const answerInput = document.querySelector(".practice-container .answer-input");
-            const answerFeedback = document.querySelector(".practice-container .answer-feedback");
+            questionCards.forEach(prac => prac.style.display = "none");
 
-            if (questionNumber) questionNumber.textContent = "Question " + (currentPracticeIndex + 1);
-            if (questionText) questionText.textContent = current.meaning;
-            if (practiceProgress) practiceProgress.textContent = (currentPracticeIndex + 1) + "/" + vocabulary.length;
+            if (questionCards[currentPracticeIndex]){
+                questionCards[currentPracticeIndex].style.display = "block";
+            }
 
+
+            const questionCard = questionCards[currentPracticeIndex]?.querySelector(".question-card");
+
+
+
+            let practiceProgress = document.querySelector(".progress-question-text");
+            practiceProgress.textContent = (currentPracticeIndex + 1) + "/" + total;
+
+            let answerInput = document.querySelector(".answer-input");
             // Clear previous input and feedback
             if (answerInput) {
-                answerInput.value = practiceAnswers[currentPracticeIndex] || "";
+                answerInput.value = "Hehe" || "";
                 answerInput.disabled = false;
             }
+            let answerFeedback = document.querySelector(".answer-feedback");
             if (answerFeedback) {
                 answerFeedback.innerHTML = "";
                 answerFeedback.className = "answer-feedback";
@@ -671,18 +723,7 @@
             // Update flag button
             updatePracticeFlag();
 
-            // Update navigation buttons
-            const prevBtn = document.querySelector(".practice-container .prev-btn");
-            const nextBtn = document.querySelector(".practice-container .next-btn");
-
-            if (prevBtn) prevBtn.disabled = currentPracticeIndex === 0;
-            if (nextBtn) {
-                if (currentPracticeIndex === vocabulary.length - 1) {
-                    nextBtn.innerHTML = 'Finish <i class="fas fa-check"></i>';
-                } else {
-                    nextBtn.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
-                }
-            }
+            updateQuestionButtonStates()
         }
 
         function updatePracticeFlag() {
@@ -698,101 +739,101 @@
             }
         }
 
-        function checkPracticeAnswer() {
-            const answerInput = document.querySelector(".practice-container .answer-input");
-            const answerFeedback = document.querySelector(".practice-container .answer-feedback");
+        // function checkPracticeAnswer() {
+        //     const answerInput = document.querySelector(".practice-container .answer-input");
+        //     const answerFeedback = document.querySelector(".practice-container .answer-feedback");
+        //
+        //     if (!answerInput || !answerFeedback) return;
+        //
+        //     const userAnswer = answerInput.value.trim().toLowerCase();
+        //     const correctAnswer = vocabulary[currentPracticeIndex].word.toLowerCase();
+        //
+        //     // Store user's answer
+        //     practiceAnswers[currentPracticeIndex] = answerInput.value.trim();
+        //
+        //     if (userAnswer === correctAnswer) {
+        //         answerFeedback.innerHTML = '<div class="feedback-correct">' +
+        //             '<i class="fas fa-check-circle"></i>' +
+        //             'Correct! The answer is "' + vocabulary[currentPracticeIndex].word + '"' +
+        //             '</div>';
+        //         answerFeedback.className = "answer-feedback correct";
+        //         practiceScore++;
+        //     } else if (userAnswer) {
+        //         answerFeedback.innerHTML = '<div class="feedback-incorrect">' +
+        //             '<i class="fas fa-times-circle"></i>' +
+        //             'Incorrect. The correct answer is "' + vocabulary[currentPracticeIndex].word + '"' +
+        //             '</div>';
+        //         answerFeedback.className = "answer-feedback incorrect";
+        //     } else {
+        //         answerFeedback.innerHTML = '<div class="feedback-empty">' +
+        //             '<i class="fas fa-exclamation-circle"></i>' +
+        //             'Please enter an answer. The correct answer is "' + vocabulary[currentPracticeIndex].word + '"' +
+        //             '</div>';
+        //         answerFeedback.className = "answer-feedback empty";
+        //     }
+        //
+        //     answerInput.disabled = true;
+        // }
 
-            if (!answerInput || !answerFeedback) return;
+        // function prevPractice() {
+        //     if (currentPracticeIndex > 0) {
+        //         currentPracticeIndex--;
+        //         updatePractice();
+        //     }
+        // }
 
-            const userAnswer = answerInput.value.trim().toLowerCase();
-            const correctAnswer = vocabulary[currentPracticeIndex].word.toLowerCase();
+        // function nextPractice() {
+        //     const answerInput = document.querySelector(".practice-container .answer-input");
+        //
+        //     // Auto-check answer if not already checked and has input
+        //     if (answerInput && !answerInput.disabled && answerInput.value.trim()) {
+        //         checkPracticeAnswer();
+        //
+        //         // Delay moving to next question to show feedback
+        //         setTimeout(function () {
+        //             proceedToNext();
+        //         }, 1500);
+        //     } else {
+        //         proceedToNext();
+        //     }
+        // }
 
-            // Store user's answer
-            practiceAnswers[currentPracticeIndex] = answerInput.value.trim();
+        // function proceedToNext() {
+        //     if (currentPracticeIndex < total - 1) {
+        //         currentPracticeIndex++;
+        //         updatePractice();
+        //     } else {
+        //         finishPractice();
+        //     }
+        // }
 
-            if (userAnswer === correctAnswer) {
-                answerFeedback.innerHTML = '<div class="feedback-correct">' +
-                    '<i class="fas fa-check-circle"></i>' +
-                    'Correct! The answer is "' + vocabulary[currentPracticeIndex].word + '"' +
-                    '</div>';
-                answerFeedback.className = "answer-feedback correct";
-                practiceScore++;
-            } else if (userAnswer) {
-                answerFeedback.innerHTML = '<div class="feedback-incorrect">' +
-                    '<i class="fas fa-times-circle"></i>' +
-                    'Incorrect. The correct answer is "' + vocabulary[currentPracticeIndex].word + '"' +
-                    '</div>';
-                answerFeedback.className = "answer-feedback incorrect";
-            } else {
-                answerFeedback.innerHTML = '<div class="feedback-empty">' +
-                    '<i class="fas fa-exclamation-circle"></i>' +
-                    'Please enter an answer. The correct answer is "' + vocabulary[currentPracticeIndex].word + '"' +
-                    '</div>';
-                answerFeedback.className = "answer-feedback empty";
-            }
+        // function finishPractice() {
+        //     const correctAnswers = practiceAnswers.filter(function (answer, index) {
+        //         return answer && answer.toLowerCase().trim() === vocabulary[index].word.toLowerCase();
+        //     }).length;
+        //
+        //     const percentage = Math.round((correctAnswers / vocabulary.length) * 100);
+        //
+        //     let message = '';
+        //     if (percentage >= 90) message = 'Outstanding!';
+        //     else if (percentage >= 80) message = 'Excellent Work!';
+        //     else if (percentage >= 70) message = 'Good Job!';
+        //     else if (percentage >= 60) message = 'Keep Practicing!';
+        //     else message = 'Study More!';
+        //
+        //     alert("Practice Complete!\n\nScore: " + correctAnswers + "/" + vocabulary.length + " (" + percentage + "%)\n" + message);
+        //
+        //     // Reset for next practice
+        //     resetPractice();
+        // }
 
-            answerInput.disabled = true;
-        }
-
-        function prevPractice() {
-            if (currentPracticeIndex > 0) {
-                currentPracticeIndex--;
-                updatePractice();
-            }
-        }
-
-        function nextPractice() {
-            const answerInput = document.querySelector(".practice-container .answer-input");
-
-            // Auto-check answer if not already checked and has input
-            if (answerInput && !answerInput.disabled && answerInput.value.trim()) {
-                checkPracticeAnswer();
-
-                // Delay moving to next question to show feedback
-                setTimeout(function () {
-                    proceedToNext();
-                }, 1500);
-            } else {
-                proceedToNext();
-            }
-        }
-
-        function proceedToNext() {
-            if (currentPracticeIndex < vocabulary.length - 1) {
-                currentPracticeIndex++;
-                updatePractice();
-            } else {
-                finishPractice();
-            }
-        }
-
-        function finishPractice() {
-            const correctAnswers = practiceAnswers.filter(function (answer, index) {
-                return answer && answer.toLowerCase().trim() === vocabulary[index].word.toLowerCase();
-            }).length;
-
-            const percentage = Math.round((correctAnswers / vocabulary.length) * 100);
-
-            let message = '';
-            if (percentage >= 90) message = 'Outstanding!';
-            else if (percentage >= 80) message = 'Excellent Work!';
-            else if (percentage >= 70) message = 'Good Job!';
-            else if (percentage >= 60) message = 'Keep Practicing!';
-            else message = 'Study More!';
-
-            alert("Practice Complete!\n\nScore: " + correctAnswers + "/" + vocabulary.length + " (" + percentage + "%)\n" + message);
-
-            // Reset for next practice
-            resetPractice();
-        }
-
-        function resetPractice() {
-            currentPracticeIndex = 0;
-            practiceAnswers.fill(null);
-            practiceFlags.clear();
-            practiceScore = 0;
-            updatePractice();
-        }
+        // function resetPractice() {
+        //     currentPracticeIndex = 0;
+        //     practiceAnswers.fill(null);
+        //     practiceFlags.clear();
+        //     practiceScore = 0;
+        //     updatePractice();
+        // }
 
         function togglePracticeFlag() {
             if (practiceFlags.has(currentPracticeIndex)) {
@@ -803,411 +844,414 @@
             updatePracticeFlag();
         }
 
+        function updateQuestionButtonStates() {
+            if (prevPracBtn) prevPracBtn.disabled = currentIndex === 0;
+            if (nextPracBtn) nextPracBtn.disabled = currentIndex === total - 1;
+        }
         // ==========================
         // EXAM LOGIC
         // ==========================
-        let currentExamIndex = 0;
-        let examAnswers = new Array(vocabulary.length).fill(null);
-        let flaggedQuestions = new Set();
-        let examTimer = 30 * 60; // 30 minutes in seconds
-        let timerInterval;
-        let examInitialized = false;
+        // let currentExamIndex = 0;
+        // let examAnswers = new Array(vocabulary.length).fill(null);
+        // let flaggedQuestions = new Set();
+        // let examTimer = 30 * 60; // 30 minutes in seconds
+        // let timerInterval;
+        // let examInitialized = false;
+        //
+        // function initializeExam() {
+        //     if (examInitialized) return;
+        //
+        //     generateQuestionGrid();
+        //     updateExamDisplay();
+        //     updateStats();
+        //     bindExamEvents();
+        //     examInitialized = true;
+        // }
 
-        function initializeExam() {
-            if (examInitialized) return;
+        // function generateQuestionGrid() {
+        //     const grid = document.getElementById('questionGrid');
+        //     if (!grid) return;
+        //
+        //     grid.innerHTML = '';
+        //
+        //     vocabulary.forEach(function (_, index) {
+        //         const dot = document.createElement('div');
+        //         dot.className = 'question-dot';
+        //         dot.textContent = index + 1;
+        //         dot.onclick = function () {
+        //             navigateToQuestion(index);
+        //         };
+        //         grid.appendChild(dot);
+        //     });
+        // }
 
-            generateQuestionGrid();
-            updateExamDisplay();
-            updateStats();
-            bindExamEvents();
-            examInitialized = true;
-        }
+        // function updateExamDisplay() {
+        //     const current = vocabulary[currentExamIndex];
+        //
+        //     // Kiểm tra elements tồn tại
+        //     const questionNumber = document.querySelector('.exam-container .question-number');
+        //     const examWordText = document.getElementById('examWordText');
+        //     const examWordPhonetic = document.getElementById('examWordPhonetic');
+        //     const currentQuestionNum = document.getElementById('currentQuestionNum');
+        //
+        //     if (questionNumber) questionNumber.textContent = "Question " + (currentExamIndex + 1);
+        //     if (examWordText) examWordText.textContent = current.word;
+        //     if (examWordPhonetic) examWordPhonetic.textContent = current.phonetic;
+        //     if (currentQuestionNum) currentQuestionNum.textContent = currentExamIndex + 1;
+        //
+        //     // Update options
+        //     const optionCards = document.querySelectorAll('.exam-container .option-card');
+        //     optionCards.forEach(function (card, index) {
+        //         if (current.options && current.options[index]) {
+        //             const optionText = card.querySelector('.option-text');
+        //             if (optionText) {
+        //                 optionText.textContent = current.options[index];
+        //             }
+        //             card.classList.remove('selected');
+        //
+        //             // Restore previous selection
+        //             if (examAnswers[currentExamIndex] === index) {
+        //                 card.classList.add('selected');
+        //             }
+        //         }
+        //     });
 
-        function generateQuestionGrid() {
-            const grid = document.getElementById('questionGrid');
-            if (!grid) return;
+        <%--    // Update navigation buttons--%>
+        <%--    const prevBtn = document.getElementById('prevBtn');--%>
+        <%--    const nextBtn = document.getElementById('nextBtn');--%>
 
-            grid.innerHTML = '';
+        <%--    if (prevBtn) prevBtn.disabled = currentExamIndex === 0;--%>
+        <%--    if (nextBtn) {--%>
+        <%--        if (currentExamIndex === ${fn:length(words)} - 1) {--%>
+        <%--            nextBtn.innerHTML = 'Finish <i class="fas fa-check"></i>';--%>
+        <%--        } else {--%>
+        <%--            nextBtn.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';--%>
+        <%--        }--%>
+        <%--    }--%>
 
-            vocabulary.forEach(function (_, index) {
-                const dot = document.createElement('div');
-                dot.className = 'question-dot';
-                dot.textContent = index + 1;
-                dot.onclick = function () {
-                    navigateToQuestion(index);
-                };
-                grid.appendChild(dot);
-            });
-        }
+        <%--    // Update progress--%>
+        <%--    const progressBar = document.getElementById('examProgressBar');--%>
+        <%--    if (progressBar) {--%>
+        <%--        const progress = ((currentExamIndex + 1) / ${fn:length(words)}) * 100;--%>
+        <%--        progressBar.style.width = progress + '%';--%>
+        <%--    }--%>
 
-        function updateExamDisplay() {
-            const current = vocabulary[currentExamIndex];
+        <%--    // Update question grid--%>
+        <%--    updateQuestionGrid();--%>
 
-            // Kiểm tra elements tồn tại
-            const questionNumber = document.querySelector('.exam-container .question-number');
-            const examWordText = document.getElementById('examWordText');
-            const examWordPhonetic = document.getElementById('examWordPhonetic');
-            const currentQuestionNum = document.getElementById('currentQuestionNum');
+        <%--    // Update flag button--%>
+        <%--    const flagBtn = document.getElementById('flagBtn');--%>
+        <%--    if (flagBtn) {--%>
+        <%--        if (flaggedQuestions.has(currentExamIndex)) {--%>
+        <%--            flagBtn.innerHTML = '<i class="fas fa-flag"></i> Unflag Question';--%>
+        <%--            flagBtn.style.background = 'linear-gradient(135deg, #dc3545, #c82333)';--%>
+        <%--        } else {--%>
+        <%--            flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flag Question';--%>
+        <%--            flagBtn.style.background = 'linear-gradient(135deg, #ffc107, #fd7e14)';--%>
+        <%--        }--%>
+        <%--    }--%>
+        <%--}--%>
 
-            if (questionNumber) questionNumber.textContent = "Question " + (currentExamIndex + 1);
-            if (examWordText) examWordText.textContent = current.word;
-            if (examWordPhonetic) examWordPhonetic.textContent = current.phonetic;
-            if (currentQuestionNum) currentQuestionNum.textContent = currentExamIndex + 1;
+        <%--function updateQuestionGrid() {--%>
+        <%--    const dots = document.querySelectorAll('.question-dot');--%>
+        <%--    dots.forEach(function (dot, index) {--%>
+        <%--        dot.className = 'question-dot';--%>
 
-            // Update options
-            const optionCards = document.querySelectorAll('.exam-container .option-card');
-            optionCards.forEach(function (card, index) {
-                if (current.options && current.options[index]) {
-                    const optionText = card.querySelector('.option-text');
-                    if (optionText) {
-                        optionText.textContent = current.options[index];
-                    }
-                    card.classList.remove('selected');
+        <%--        if (index === currentExamIndex) {--%>
+        <%--            dot.classList.add('current');--%>
+        <%--        } else if (examAnswers[index] !== null) {--%>
+        <%--            dot.classList.add('answered');--%>
+        <%--        }--%>
 
-                    // Restore previous selection
-                    if (examAnswers[currentExamIndex] === index) {
-                        card.classList.add('selected');
-                    }
-                }
-            });
+        <%--        if (flaggedQuestions.has(index)) {--%>
+        <%--            dot.classList.add('flagged');--%>
+        <%--        }--%>
+        <%--    });--%>
+        <%--}--%>
 
-            // Update navigation buttons
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
+        <%--function updateStats() {--%>
+        <%--    const answeredCount = examAnswers.filter(function (answer) {--%>
+        <%--        return answer !== null;--%>
+        <%--    }).length;--%>
+        <%--    const flaggedCount = flaggedQuestions.size;--%>
+        <%--    const remainingCount = ${fn:length(words)} - answeredCount;--%>
 
-            if (prevBtn) prevBtn.disabled = currentExamIndex === 0;
-            if (nextBtn) {
-                if (currentExamIndex === vocabulary.length - 1) {
-                    nextBtn.innerHTML = 'Finish <i class="fas fa-check"></i>';
-                } else {
-                    nextBtn.innerHTML = 'Next <i class="fas fa-chevron-right"></i>';
-                }
-            }
+        <%--    const answeredEl = document.getElementById('answeredCount');--%>
+        <%--    const flaggedEl = document.getElementById('flaggedCount');--%>
+        <%--    const remainingEl = document.getElementById('remainingCount');--%>
 
-            // Update progress
-            const progressBar = document.getElementById('examProgressBar');
-            if (progressBar) {
-                const progress = ((currentExamIndex + 1) / vocabulary.length) * 100;
-                progressBar.style.width = progress + '%';
-            }
+        <%--    if (answeredEl) answeredEl.textContent = answeredCount;--%>
+        <%--    if (flaggedEl) flaggedEl.textContent = flaggedCount;--%>
+        <%--    if (remainingEl) remainingEl.textContent = remainingCount;--%>
+        <%--}--%>
 
-            // Update question grid
-            updateQuestionGrid();
+        <%--function startTimer() {--%>
+        <%--    if (timerInterval) clearInterval(timerInterval);--%>
 
-            // Update flag button
-            const flagBtn = document.getElementById('flagBtn');
-            if (flagBtn) {
-                if (flaggedQuestions.has(currentExamIndex)) {
-                    flagBtn.innerHTML = '<i class="fas fa-flag"></i> Unflag Question';
-                    flagBtn.style.background = 'linear-gradient(135deg, #dc3545, #c82333)';
-                } else {
-                    flagBtn.innerHTML = '<i class="fas fa-flag"></i> Flag Question';
-                    flagBtn.style.background = 'linear-gradient(135deg, #ffc107, #fd7e14)';
-                }
-            }
-        }
+        <%--    timerInterval = setInterval(function () {--%>
+        <%--        examTimer--;--%>
 
-        function updateQuestionGrid() {
-            const dots = document.querySelectorAll('.question-dot');
-            dots.forEach(function (dot, index) {
-                dot.className = 'question-dot';
+        <%--        const minutes = Math.floor(examTimer / 60);--%>
+        <%--        const seconds = examTimer % 60;--%>
+        <%--        const timerDisplay = document.getElementById('timerDisplay');--%>
 
-                if (index === currentExamIndex) {
-                    dot.classList.add('current');
-                } else if (examAnswers[index] !== null) {
-                    dot.classList.add('answered');
-                }
+        <%--        if (timerDisplay) {--%>
+        <%--            timerDisplay.textContent = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');--%>
+        <%--        }--%>
 
-                if (flaggedQuestions.has(index)) {
-                    dot.classList.add('flagged');
-                }
-            });
-        }
+        <%--        if (examTimer <= 0) {--%>
+        <%--            clearInterval(timerInterval);--%>
+        <%--            submitExam();--%>
+        <%--        }--%>
+        <%--    }, 1000);--%>
+        <%--}--%>
 
-        function updateStats() {
-            const answeredCount = examAnswers.filter(function (answer) {
-                return answer !== null;
-            }).length;
-            const flaggedCount = flaggedQuestions.size;
-            const remainingCount = vocabulary.length - answeredCount;
+        <%--function navigateToQuestion(index) {--%>
+        <%--    currentExamIndex = index;--%>
+        <%--    updateExamDisplay();--%>
+        <%--}--%>
 
-            const answeredEl = document.getElementById('answeredCount');
-            const flaggedEl = document.getElementById('flaggedCount');
-            const remainingEl = document.getElementById('remainingCount');
+        <%--function bindExamEvents() {--%>
+        <%--    // Option card events--%>
+        <%--    const optionCards = document.querySelectorAll('.exam-container .option-card');--%>
+        <%--    optionCards.forEach(function (card, index) {--%>
+        <%--        card.addEventListener('click', function () {--%>
+        <%--            document.querySelectorAll('.exam-container .option-card').forEach(function (c) {--%>
+        <%--                c.classList.remove('selected');--%>
+        <%--            });--%>
+        <%--            card.classList.add('selected');--%>
+        <%--            examAnswers[currentExamIndex] = index;--%>
+        <%--            updateStats();--%>
+        <%--            updateQuestionGrid();--%>
+        <%--        });--%>
+        <%--    });--%>
 
-            if (answeredEl) answeredEl.textContent = answeredCount;
-            if (flaggedEl) flaggedEl.textContent = flaggedCount;
-            if (remainingEl) remainingEl.textContent = remainingCount;
-        }
+        <%--    // Navigation events--%>
+        <%--    const prevBtn = document.getElementById('prevBtn');--%>
+        <%--    const nextBtn = document.getElementById('nextBtn');--%>
+        <%--    const flagBtn = document.getElementById('flagBtn');--%>
+        <%--    const submitBtn = document.getElementById('submitExamBtn');--%>
 
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
+        <%--    if (prevBtn) {--%>
+        <%--        prevBtn.addEventListener('click', function () {--%>
+        <%--            if (currentExamIndex > 0) {--%>
+        <%--                currentExamIndex--;--%>
+        <%--                updateExamDisplay();--%>
+        <%--            }--%>
+        <%--        });--%>
+        <%--    }--%>
 
-            timerInterval = setInterval(function () {
-                examTimer--;
+        <%--    if (nextBtn) {--%>
+        <%--        nextBtn.addEventListener('click', function () {--%>
+        <%--            if (currentExamIndex < ${fn:length(words)} - 1) {--%>
+        <%--                currentExamIndex++;--%>
+        <%--                updateExamDisplay();--%>
+        <%--            } else {--%>
+        <%--                submitExam();--%>
+        <%--            }--%>
+        <%--        });--%>
+        <%--    }--%>
 
-                const minutes = Math.floor(examTimer / 60);
-                const seconds = examTimer % 60;
-                const timerDisplay = document.getElementById('timerDisplay');
+        <%--    if (flagBtn) {--%>
+        <%--        flagBtn.addEventListener('click', function () {--%>
+        <%--            if (flaggedQuestions.has(currentExamIndex)) {--%>
+        <%--                flaggedQuestions.delete(currentExamIndex);--%>
+        <%--            } else {--%>
+        <%--                flaggedQuestions.add(currentExamIndex);--%>
+        <%--            }--%>
+        <%--            updateExamDisplay();--%>
+        <%--            updateStats();--%>
+        <%--        });--%>
+        <%--    }--%>
 
-                if (timerDisplay) {
-                    timerDisplay.textContent = minutes.toString().padStart(2, '0') + ':' + seconds.toString().padStart(2, '0');
-                }
+        <%--    if (submitBtn) {--%>
+        <%--        submitBtn.addEventListener('click', submitExam);--%>
+        <%--    }--%>
 
-                if (examTimer <= 0) {
-                    clearInterval(timerInterval);
-                    submitExam();
-                }
-            }, 1000);
-        }
+        <%--    // Results modal events--%>
+        <%--    const retakeBtn = document.getElementById('retakeExamBtn');--%>
+        <%--    if (retakeBtn) {--%>
+        <%--        retakeBtn.addEventListener('click', function () {--%>
+        <%--            resetExam();--%>
+        <%--            const modal = bootstrap.Modal.getInstance(document.getElementById('examResultsModal'));--%>
+        <%--            if (modal) modal.hide();--%>
+        <%--        });--%>
+        <%--    }--%>
+        <%--}--%>
 
-        function navigateToQuestion(index) {
-            currentExamIndex = index;
-            updateExamDisplay();
-        }
+        <%--function submitExam() {--%>
+        <%--    clearInterval(timerInterval);--%>
 
-        function bindExamEvents() {
-            // Option card events
-            const optionCards = document.querySelectorAll('.exam-container .option-card');
-            optionCards.forEach(function (card, index) {
-                card.addEventListener('click', function () {
-                    document.querySelectorAll('.exam-container .option-card').forEach(function (c) {
-                        c.classList.remove('selected');
-                    });
-                    card.classList.add('selected');
-                    examAnswers[currentExamIndex] = index;
-                    updateStats();
-                    updateQuestionGrid();
-                });
-            });
+        <%--    // Calculate results--%>
+        <%--    let correctCount = 0;--%>
+        <%--    examAnswers.forEach(function (answer, index) {--%>
+        <%--        if (answer !== null && answer === vocabulary[index].correct) {--%>
+        <%--            correctCount++;--%>
+        <%--        }--%>
+        <%--    });--%>
 
-            // Navigation events
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const flagBtn = document.getElementById('flagBtn');
-            const submitBtn = document.getElementById('submitExamBtn');
+        <%--    const incorrectCount = examAnswers.filter(function (answer) {--%>
+        <%--        return answer !== null;--%>
+        <%--    }).length - correctCount;--%>
+        <%--    const unansweredCount = examAnswers.filter(function (answer) {--%>
+        <%--        return answer === null;--%>
+        <%--    }).length;--%>
+        <%--    const percentage = Math.round((correctCount / ${fn:length(words)}) * 100);--%>
 
-            if (prevBtn) {
-                prevBtn.addEventListener('click', function () {
-                    if (currentExamIndex > 0) {
-                        currentExamIndex--;
-                        updateExamDisplay();
-                    }
-                });
-            }
+        <%--    // Update results modal--%>
+        <%--    const finalScoreEl = document.getElementById('finalScorePercentage');--%>
+        <%--    const correctEl = document.getElementById('correctAnswers');--%>
+        <%--    const incorrectEl = document.getElementById('incorrectAnswers');--%>
+        <%--    const unansweredEl = document.getElementById('unansweredQuestions');--%>
+        <%--    const scoreMessageEl = document.getElementById('scoreMessage');--%>
 
-            if (nextBtn) {
-                nextBtn.addEventListener('click', function () {
-                    if (currentExamIndex < vocabulary.length - 1) {
-                        currentExamIndex++;
-                        updateExamDisplay();
-                    } else {
-                        submitExam();
-                    }
-                });
-            }
+        <%--    if (finalScoreEl) finalScoreEl.textContent = percentage + '%';--%>
+        <%--    if (correctEl) correctEl.textContent = correctCount;--%>
+        <%--    if (incorrectEl) incorrectEl.textContent = incorrectCount;--%>
+        <%--    if (unansweredEl) unansweredEl.textContent = unansweredCount;--%>
 
-            if (flagBtn) {
-                flagBtn.addEventListener('click', function () {
-                    if (flaggedQuestions.has(currentExamIndex)) {
-                        flaggedQuestions.delete(currentExamIndex);
-                    } else {
-                        flaggedQuestions.add(currentExamIndex);
-                    }
-                    updateExamDisplay();
-                    updateStats();
-                });
-            }
+        <%--    // Update score message--%>
+        <%--    let message = '';--%>
+        <%--    if (percentage >= 90) message = 'Outstanding!';--%>
+        <%--    else if (percentage >= 80) message = 'Excellent Work!';--%>
+        <%--    else if (percentage >= 70) message = 'Good Job!';--%>
+        <%--    else if (percentage >= 60) message = 'Keep Practicing!';--%>
+        <%--    else message = 'Study More!';--%>
 
-            if (submitBtn) {
-                submitBtn.addEventListener('click', submitExam);
-            }
+        <%--    if (scoreMessageEl) scoreMessageEl.textContent = message;--%>
 
-            // Results modal events
-            const retakeBtn = document.getElementById('retakeExamBtn');
-            if (retakeBtn) {
-                retakeBtn.addEventListener('click', function () {
-                    resetExam();
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('examResultsModal'));
-                    if (modal) modal.hide();
-                });
-            }
-        }
+        <%--    // Show results modal--%>
+        <%--    const modal = document.getElementById('examResultsModal');--%>
+        <%--    if (modal) {--%>
+        <%--        new bootstrap.Modal(modal).show();--%>
+        <%--    }--%>
+        <%--}--%>
 
-        function submitExam() {
-            clearInterval(timerInterval);
-
-            // Calculate results
-            let correctCount = 0;
-            examAnswers.forEach(function (answer, index) {
-                if (answer !== null && answer === vocabulary[index].correct) {
-                    correctCount++;
-                }
-            });
-
-            const incorrectCount = examAnswers.filter(function (answer) {
-                return answer !== null;
-            }).length - correctCount;
-            const unansweredCount = examAnswers.filter(function (answer) {
-                return answer === null;
-            }).length;
-            const percentage = Math.round((correctCount / vocabulary.length) * 100);
-
-            // Update results modal
-            const finalScoreEl = document.getElementById('finalScorePercentage');
-            const correctEl = document.getElementById('correctAnswers');
-            const incorrectEl = document.getElementById('incorrectAnswers');
-            const unansweredEl = document.getElementById('unansweredQuestions');
-            const scoreMessageEl = document.getElementById('scoreMessage');
-
-            if (finalScoreEl) finalScoreEl.textContent = percentage + '%';
-            if (correctEl) correctEl.textContent = correctCount;
-            if (incorrectEl) incorrectEl.textContent = incorrectCount;
-            if (unansweredEl) unansweredEl.textContent = unansweredCount;
-
-            // Update score message
-            let message = '';
-            if (percentage >= 90) message = 'Outstanding!';
-            else if (percentage >= 80) message = 'Excellent Work!';
-            else if (percentage >= 70) message = 'Good Job!';
-            else if (percentage >= 60) message = 'Keep Practicing!';
-            else message = 'Study More!';
-
-            if (scoreMessageEl) scoreMessageEl.textContent = message;
-
-            // Show results modal
-            const modal = document.getElementById('examResultsModal');
-            if (modal) {
-                new bootstrap.Modal(modal).show();
-            }
-        }
-
-        function resetExam() {
-            currentExamIndex = 0;
-            examAnswers.fill(null);
-            flaggedQuestions.clear();
-            examTimer = 30 * 60;
-            updateExamDisplay();
-            updateStats();
-            startTimer();
-        }
+        // function resetExam() {
+        //     currentExamIndex = 0;
+        //     examAnswers.fill(null);
+        //     flaggedQuestions.clear();
+        //     examTimer = 30 * 60;
+        //     updateExamDisplay();
+        //     updateStats();
+        //     startTimer();
+        // }
 
         // ==========================
         // EVENT BINDINGS
         // ==========================
 
         // Flashcard events
-        flashcard.addEventListener("click", flipCard);
-        flashcard.querySelectorAll(".audio-btn").forEach(function (btn) {
-            btn.addEventListener("click", function (e) {
-                e.stopPropagation();
-                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                setTimeout(function () {
-                    btn.innerHTML = '<i class="fas fa-volume-up"></i>';
-                    console.log("Playing audio:", vocabulary[currentIndex].word);
-                }, 1000);
-            });
-        });
+        <%--flashcard.addEventListener("click", flipCard);--%>
+        <%--flashcard.querySelectorAll(".audio-btn").forEach(function (btn) {--%>
+        <%--    btn.addEventListener("click", function (e) {--%>
+        <%--        e.stopPropagation();--%>
+        <%--        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';--%>
+        <%--        setTimeout(function () {--%>
+        <%--            btn.innerHTML = '<i class="fas fa-volume-up"></i>';--%>
+        <%--        }, 1000);--%>
+        <%--    });--%>
+        <%--});--%>
 
-        document.querySelector(".flashcard-container .prev-btn").addEventListener("click", previousCard);
-        document.querySelector(".flashcard-container .next-btn").addEventListener("click", nextCard);
+        <%--document.querySelector(".flashcard-container .prev-btn").addEventListener("click", previousCard);--%>
+        <%--document.querySelector(".flashcard-container .next-btn").addEventListener("click", nextCard);--%>
 
-        // Quiz events
-        document.querySelector(".multiple-choice-container .prev-btn").addEventListener("click", prevQuiz);
-        document.querySelector(".multiple-choice-container .next-btn").addEventListener("click", nextQuiz);
+        <%--// Quiz events--%>
+        <%--document.querySelector(".multiple-choice-container .prev-btn").addEventListener("click", prevQuiz);--%>
+        <%--document.querySelector(".multiple-choice-container .next-btn").addEventListener("click", nextQuiz);--%>
 
-        // Practice events
-        const practiceNavPrev = document.querySelector(".practice-container .prev-btn");
-        const practiceNavNext = document.querySelector(".practice-container .next-btn");
-        const practiceFlagBtn = document.querySelector(".practice-container .flag-btn");
-        const practiceAnswerInput = document.querySelector(".practice-container .answer-input");
+        <%--// Practice events--%>
+        <%--const practiceNavPrev = document.querySelector(".practice-container .prev-btn");--%>
+        <%--const practiceNavNext = document.querySelector(".practice-container .next-btn");--%>
+        <%--const practiceFlagBtn = document.querySelector(".practice-container .flag-btn");--%>
+        <%--const practiceAnswerInput = document.querySelector(".practice-container .answer-input");--%>
 
-        if (practiceNavPrev) {
-            practiceNavPrev.addEventListener("click", prevPractice);
-        }
+        <%--if (practiceNavPrev) {--%>
+        <%--    practiceNavPrev.addEventListener("click", prevPractice);--%>
+        <%--}--%>
 
-        if (practiceNavNext) {
-            practiceNavNext.addEventListener("click", nextPractice);
-        }
+        <%--if (practiceNavNext) {--%>
+        <%--    practiceNavNext.addEventListener("click", nextPractice);--%>
+        <%--}--%>
 
-        if (practiceFlagBtn) {
-            practiceFlagBtn.addEventListener("click", togglePracticeFlag);
-        }
+        <%--if (practiceFlagBtn) {--%>
+        <%--    practiceFlagBtn.addEventListener("click", togglePracticeFlag);--%>
+        <%--}--%>
 
-        if (practiceAnswerInput) {
-            // Check answer on Enter key
-            practiceAnswerInput.addEventListener("keypress", function (e) {
-                if (e.key === "Enter" && !practiceAnswerInput.disabled) {
-                    checkPracticeAnswer();
-                }
-            });
+        <%--if (practiceAnswerInput) {--%>
+        <%--    // Check answer on Enter key--%>
+        <%--    practiceAnswerInput.addEventListener("keypress", function (e) {--%>
+        <%--        if (e.key === "Enter" && !practiceAnswerInput.disabled) {--%>
+        <%--            checkPracticeAnswer();--%>
+        <%--        }--%>
+        <%--    });--%>
 
-            // Save answer as user types
-            practiceAnswerInput.addEventListener("input", function () {
-                practiceAnswers[currentPracticeIndex] = practiceAnswerInput.value.trim();
-            });
+        <%--    // Save answer as user types--%>
+        <%--    practiceAnswerInput.addEventListener("input", function () {--%>
+        <%--        practiceAnswers[currentPracticeIndex] = practiceAnswerInput.value.trim();--%>
+        <%--    });--%>
 
-            // Auto-focus when practice mode is activated
-            practiceAnswerInput.addEventListener("focus", function () {
-                practiceAnswerInput.select();
-            });
-        }
+        <%--    // Auto-focus when practice mode is activated--%>
+        <%--    practiceAnswerInput.addEventListener("focus", function () {--%>
+        <%--        practiceAnswerInput.select();--%>
+        <%--    });--%>
+        <%--}--%>
 
-        // Keyboard navigation
-        document.addEventListener("keydown", function (e) {
-            const flashcardVisible = flashcard.closest(".flashcard-container").style.display !== "none";
-            const quizVisible = document.querySelector(".multiple-choice-container").style.display !== "none";
-            const examVisible = document.querySelector(".exam-container").style.display !== "none";
-            const practiceVisible = document.querySelector(".practice-container").style.display !== "none";
+        <%--// Keyboard navigation--%>
+        <%--document.addEventListener("keydown", function (e) {--%>
+        <%--    const flashcardVisible = flashcard.closest(".flashcard-container").style.display !== "none";--%>
+        <%--    const quizVisible = document.querySelector(".multiple-choice-container").style.display !== "none";--%>
+        <%--    const examVisible = document.querySelector(".exam-container").style.display !== "none";--%>
+        <%--    const practiceVisible = document.querySelector(".practice-container").style.display !== "none";--%>
 
-            switch (e.key) {
-                case " ":
-                case "Enter":
-                    if (flashcardVisible) {
-                        e.preventDefault();
-                        flipCard();
-                    }
-                    break;
-                case "ArrowLeft":
-                    e.preventDefault();
-                    if (flashcardVisible) {
-                        previousCard();
-                    } else if (quizVisible) {
-                        prevQuiz();
-                    } else if (examVisible && currentExamIndex > 0) {
-                        currentExamIndex--;
-                        updateExamDisplay();
-                    } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {
-                        prevPractice();
-                    }
-                    break;
-                case "ArrowRight":
-                    e.preventDefault();
-                    if (flashcardVisible) {
-                        nextCard();
-                    } else if (quizVisible) {
-                        nextQuiz();
-                    } else if (examVisible && currentExamIndex < vocabulary.length - 1) {
-                        currentExamIndex++;
-                        updateExamDisplay();
-                    } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {
-                        nextPractice();
-                    }
-                    break;
-                case "f":
-                case "F":
-                    if (practiceVisible && document.activeElement !== practiceAnswerInput) {
-                        e.preventDefault();
-                        togglePracticeFlag();
-                    }
-                    break;
-                case "Escape":
-                    if (practiceVisible && practiceAnswerInput) {
-                        practiceAnswerInput.blur();
-                    }
-                    break;
-            }
-        });
+        <%--    switch (e.key) {--%>
+        <%--        case " ":--%>
+        <%--        case "Enter":--%>
+        <%--            if (flashcardVisible) {--%>
+        <%--                e.preventDefault();--%>
+        <%--                flipCard();--%>
+        <%--            }--%>
+        <%--            break;--%>
+        <%--        case "ArrowLeft":--%>
+        <%--            e.preventDefault();--%>
+        <%--            if (flashcardVisible) {--%>
+        <%--                previousCard();--%>
+        <%--            } else if (quizVisible) {--%>
+        <%--                prevQuiz();--%>
+        <%--            } else if (examVisible && currentExamIndex > 0) {--%>
+        <%--                currentExamIndex--;--%>
+        <%--                updateExamDisplay();--%>
+        <%--            } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {--%>
+        <%--                prevPractice();--%>
+        <%--            }--%>
+        <%--            break;--%>
+        <%--        case "ArrowRight":--%>
+        <%--            e.preventDefault();--%>
+        <%--            if (flashcardVisible) {--%>
+        <%--                nextCard();--%>
+        <%--            } else if (quizVisible) {--%>
+        <%--                nextQuiz();--%>
+        <%--            } else if (examVisible && currentExamIndex < ${fn:length(words)} - 1) {--%>
+        <%--                currentExamIndex++;--%>
+        <%--                updateExamDisplay();--%>
+        <%--            } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {--%>
+        <%--                nextPractice();--%>
+        <%--            }--%>
+        <%--            break;--%>
+        <%--        case "f":--%>
+        <%--        case "F":--%>
+        <%--            if (practiceVisible && document.activeElement !== practiceAnswerInput) {--%>
+        <%--                e.preventDefault();--%>
+        <%--                togglePracticeFlag();--%>
+        <%--            }--%>
+        <%--            break;--%>
+        <%--        case "Escape":--%>
+        <%--            if (practiceVisible && practiceAnswerInput) {--%>
+        <%--                practiceAnswerInput.blur();--%>
+        <%--            }--%>
+        <%--            break;--%>
+        <%--    }--%>
+        <%--});--%>
 
         // ==========================
         // MODE SWITCHING
@@ -1261,7 +1305,7 @@
                 updateCard();
             } else if (mode === "quiz") {
                 multipleChoiceContainer.style.display = "block";
-                updateQuiz();
+                // updateQuiz();
             } else if (mode === "list") {
                 listSection.style.display = "block";
             } else if (mode === "practice") {
@@ -1309,8 +1353,8 @@
         // Mặc định load list
         listSection.style.display = "block";
         updateCard(); // để flashcard sẵn sàng
-        updateQuiz(); // để quiz sẵn sàng
-        updatePractice(); // để practice sẵn sàng
+        // updateQuiz(); // để quiz sẵn sàng
+        // updatePractice(); // để practice sẵn sàng
 
     });
     const buttons = document.querySelectorAll(".filter-btn");
