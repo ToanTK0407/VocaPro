@@ -595,21 +595,21 @@
             if (nextCardBtn) nextCardBtn.disabled = currentIndex === total - 1;
         }
 
-        window.flipCard = function(flashcard) {
+        window.flipCard = function (flashcard) {
             if (flashcard) {
                 flashcard.classList.toggle("flipped");
                 isFlipped = !isFlipped;
             }
         };
 
-        window.previousCard = function() {
+        window.previousCard = function () {
             if (currentIndex > 0) {
                 currentIndex--;
                 updateCard();
             }
         };
 
-        window.nextCard = function() {
+        window.nextCard = function () {
             if (currentIndex < total - 1) {
                 currentIndex++;
                 updateCard();
@@ -618,7 +618,7 @@
             }
         };
 
-        window.playAudio = function(event, word) {
+        window.playAudio = function (event, word) {
             if (event) event.stopPropagation();
 
             if ('speechSynthesis' in window && word) {
@@ -665,22 +665,7 @@
         //     options[3].querySelector(".option-text").textContent = "Nhiễu 3";
         // }
 
-        // window.previousPractice = function () {
-        //     if (currentQuizIndex > 0) {
-        //         currentQuizIndex--;
-        //         updateQuiz();
-        //     }
-        // }
-        //
-        // window.nextPractice = function () {
-        //     if (currentQuizIndex < total - 1) {
-        //         currentQuizIndex++;
-        //         updateQuiz();
-        //     } else {
-        //         alert("🎉 Bạn đã làm hết câu hỏi!");
-        //     }
-        // }
-        //
+
 
         // ==========================
         // PRACTICE LOGIC
@@ -696,13 +681,12 @@
         function updatePractice() {
             questionCards.forEach(prac => prac.style.display = "none");
 
-            if (questionCards[currentPracticeIndex]){
+            if (questionCards[currentPracticeIndex]) {
                 questionCards[currentPracticeIndex].style.display = "block";
             }
 
 
             const questionCard = questionCards[currentPracticeIndex]?.querySelector(".question-card");
-
 
 
             let practiceProgress = document.querySelector(".progress-question-text");
@@ -775,37 +759,40 @@
         //     answerInput.disabled = true;
         // }
 
-        // function prevPractice() {
-        //     if (currentPracticeIndex > 0) {
-        //         currentPracticeIndex--;
-        //         updatePractice();
-        //     }
-        // }
 
-        // function nextPractice() {
-        //     const answerInput = document.querySelector(".practice-container .answer-input");
-        //
-        //     // Auto-check answer if not already checked and has input
-        //     if (answerInput && !answerInput.disabled && answerInput.value.trim()) {
-        //         checkPracticeAnswer();
-        //
-        //         // Delay moving to next question to show feedback
-        //         setTimeout(function () {
-        //             proceedToNext();
-        //         }, 1500);
-        //     } else {
-        //         proceedToNext();
-        //     }
-        // }
+        window.previousPractice = function () {
+            if (currentPracticeIndex > 0) {
+                currentPracticeIndex--;
+                updatePractice();
+            }
+        }
 
-        // function proceedToNext() {
-        //     if (currentPracticeIndex < total - 1) {
-        //         currentPracticeIndex++;
-        //         updatePractice();
-        //     } else {
-        //         finishPractice();
-        //     }
-        // }
+        window.nextPractice = function () {
+            const answerInput = document.querySelector(".practice-container .answer-input");
+
+            // Auto-check answer if not already checked and has input
+            if (answerInput && !answerInput.disabled && answerInput.value.trim()) {
+                // checkPracticeAnswer();
+
+                // Delay moving to next question to show feedback
+                setTimeout(function () {
+                    proceedToNext();
+                }, 1500);
+            } else {
+                proceedToNext();
+            }
+        }
+
+
+        function proceedToNext() {
+            if (currentPracticeIndex < total - 1) {
+                currentPracticeIndex++;
+                updatePractice();
+            } else {
+                // finishPractice();
+            }
+        }
+
 
         // function finishPractice() {
         //     const correctAnswers = practiceAnswers.filter(function (answer, index) {
@@ -845,9 +832,10 @@
         }
 
         function updateQuestionButtonStates() {
-            if (prevPracBtn) prevPracBtn.disabled = currentIndex === 0;
-            if (nextPracBtn) nextPracBtn.disabled = currentIndex === total - 1;
+            if (prevPracBtn) prevPracBtn.disabled = currentPracticeIndex === 0;
+            if (nextPracBtn) nextPracBtn.disabled = currentPracticeIndex === total - 1;
         }
+
         // ==========================
         // EXAM LOGIC
         // ==========================
@@ -1141,6 +1129,16 @@
         // EVENT BINDINGS
         // ==========================
 
+        // Practice BINDINGS
+        // ==========================
+
+
+        if (prevPracBtn) {
+            prevPracBtn.addEventListener('click', previousPractice);
+        }
+        if (nextPracBtn) {
+            nextPracBtn.addEventListener('click', nextPractice);
+        }
         // Flashcard events
         <%--flashcard.addEventListener("click", flipCard);--%>
         <%--flashcard.querySelectorAll(".audio-btn").forEach(function (btn) {--%>
@@ -1153,8 +1151,8 @@
         <%--    });--%>
         <%--});--%>
 
-        <%--document.querySelector(".flashcard-container .prev-btn").addEventListener("click", previousCard);--%>
-        <%--document.querySelector(".flashcard-container .next-btn").addEventListener("click", nextCard);--%>
+        // document.querySelector(".flashcard-container .prev-btn").addEventListener("click", previousCard);
+        // document.querySelector(".flashcard-container .next-btn").addEventListener("click", nextCard);
 
         <%--// Quiz events--%>
         <%--document.querySelector(".multiple-choice-container .prev-btn").addEventListener("click", prevQuiz);--%>
@@ -1312,11 +1310,11 @@
                 practiceContainer.style.display = "block";
                 updatePractice();
                 // Auto-focus input field
-                setTimeout(function () {
-                    if (practiceAnswerInput) {
-                        practiceAnswerInput.focus();
-                    }
-                }, 100);
+                // setTimeout(function () {
+                //     if (practiceAnswerInput) {
+                //         practiceAnswerInput.focus();
+                //     }
+                // }, 100);
             } else if (mode === "test" && examContainer) {
                 examContainer.style.display = "block";
                 initializeExam();
