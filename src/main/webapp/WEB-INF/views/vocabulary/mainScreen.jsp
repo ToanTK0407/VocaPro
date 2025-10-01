@@ -1196,60 +1196,60 @@
         <%--}--%>
 
         <%--// Keyboard navigation--%>
-        <%--document.addEventListener("keydown", function (e) {--%>
-        <%--    const flashcardVisible = flashcard.closest(".flashcard-container").style.display !== "none";--%>
-        <%--    const quizVisible = document.querySelector(".multiple-choice-container").style.display !== "none";--%>
-        <%--    const examVisible = document.querySelector(".exam-container").style.display !== "none";--%>
-        <%--    const practiceVisible = document.querySelector(".practice-container").style.display !== "none";--%>
+        document.addEventListener("keydown", function (e) {
+            const flashcardVisible = flashcards[currentIndex]?.querySelector(".flashcard").closest(".flashcard-container").style.display !== "none";
+            const quizVisible = document.querySelector(".multiple-choice-container").style.display !== "none";
+            const examVisible = document.querySelector(".exam-container").style.display !== "none";
+            const practiceVisible = document.querySelector(".practice-container").style.display !== "none";
 
-        <%--    switch (e.key) {--%>
-        <%--        case " ":--%>
-        <%--        case "Enter":--%>
-        <%--            if (flashcardVisible) {--%>
-        <%--                e.preventDefault();--%>
-        <%--                flipCard();--%>
-        <%--            }--%>
-        <%--            break;--%>
-        <%--        case "ArrowLeft":--%>
-        <%--            e.preventDefault();--%>
-        <%--            if (flashcardVisible) {--%>
-        <%--                previousCard();--%>
-        <%--            } else if (quizVisible) {--%>
-        <%--                prevQuiz();--%>
-        <%--            } else if (examVisible && currentExamIndex > 0) {--%>
-        <%--                currentExamIndex--;--%>
-        <%--                updateExamDisplay();--%>
-        <%--            } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {--%>
-        <%--                prevPractice();--%>
-        <%--            }--%>
-        <%--            break;--%>
-        <%--        case "ArrowRight":--%>
-        <%--            e.preventDefault();--%>
-        <%--            if (flashcardVisible) {--%>
-        <%--                nextCard();--%>
-        <%--            } else if (quizVisible) {--%>
-        <%--                nextQuiz();--%>
-        <%--            } else if (examVisible && currentExamIndex < ${fn:length(words)} - 1) {--%>
-        <%--                currentExamIndex++;--%>
-        <%--                updateExamDisplay();--%>
-        <%--            } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {--%>
-        <%--                nextPractice();--%>
-        <%--            }--%>
-        <%--            break;--%>
-        <%--        case "f":--%>
-        <%--        case "F":--%>
-        <%--            if (practiceVisible && document.activeElement !== practiceAnswerInput) {--%>
-        <%--                e.preventDefault();--%>
-        <%--                togglePracticeFlag();--%>
-        <%--            }--%>
-        <%--            break;--%>
-        <%--        case "Escape":--%>
-        <%--            if (practiceVisible && practiceAnswerInput) {--%>
-        <%--                practiceAnswerInput.blur();--%>
-        <%--            }--%>
-        <%--            break;--%>
-        <%--    }--%>
-        <%--});--%>
+            switch (e.key) {
+                case " ":
+                case "Enter":
+                    if (flashcardVisible) {
+                        e.preventDefault();
+                        flipCard(flashcards[currentIndex]?.querySelector(".flashcard"));
+                    }
+                    break;
+                case "ArrowLeft":
+                    e.preventDefault();
+                    if (flashcardVisible) {
+                        previousCard();
+                    } else if (quizVisible) {
+                        prevQuiz();
+                    } else if (examVisible && currentExamIndex > 0) {
+                        currentExamIndex--;
+                        updateExamDisplay();
+                    } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {
+                        prevPractice();
+                    }
+                    break;
+                case "ArrowRight":
+                    e.preventDefault();
+                    if (flashcardVisible) {
+                        nextCard();
+                    } else if (quizVisible) {
+                        nextQuiz();
+                    } else if (examVisible && currentExamIndex < ${fn:length(words)} - 1) {
+                        currentExamIndex++;
+                        updateExamDisplay();
+                    } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {
+                        nextPractice();
+                    }
+                    break;
+                case "f":
+                case "F":
+                    if (practiceVisible && document.activeElement !== practiceAnswerInput) {
+                        e.preventDefault();
+                        togglePracticeFlag();
+                    }
+                    break;
+                case "Escape":
+                    if (practiceVisible && practiceAnswerInput) {
+                        practiceAnswerInput.blur();
+                    }
+                    break;
+            }
+        });
 
         // ==========================
         // MODE SWITCHING
@@ -1355,6 +1355,7 @@
         // updatePractice(); // để practice sẵn sàng
 
     });
+
     const buttons = document.querySelectorAll(".filter-btn");
 
     buttons.forEach(btn => {
