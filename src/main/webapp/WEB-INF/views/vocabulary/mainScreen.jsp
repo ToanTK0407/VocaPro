@@ -257,7 +257,7 @@
                 <c:forEach var="word" items="${words}" varStatus="loop">
                     <div class="question-card" style=${loop.first ? '"display:block"' : '"display:none"'}>
                         <div class="question-number">Question ${loop.index+1}</div>
-                        <button class="flag-btn" onclick="toggleFlag()" title="Flag this question">
+                        <button class="flag-btn" onclick="togglePracticeFlag()" title="Flag this question">
                             <i class="fas fa-flag"></i>
                         </button>
 
@@ -695,7 +695,7 @@
             let answerInput = document.querySelector(".answer-input");
             // Clear previous input and feedback
             if (answerInput) {
-                answerInput.value = "Hehe" || "";
+                answerInput.value ="";
                 answerInput.disabled = false;
             }
             let answerFeedback = document.querySelector(".answer-feedback");
@@ -711,7 +711,7 @@
         }
 
         function updatePracticeFlag() {
-            const flagBtn = document.querySelector(".practice-container .flag-btn");
+            const flagBtn = questionCards[currentPracticeIndex]?.querySelector(".flag-btn");
             if (flagBtn) {
                 if (practiceFlags.has(currentPracticeIndex)) {
                     flagBtn.classList.add("flagged");
@@ -762,7 +762,9 @@
 
         window.previousPractice = function () {
             if (currentPracticeIndex > 0) {
+                console.log(currentPracticeIndex)
                 currentPracticeIndex--;
+                updatePracticeFlag();
                 updatePractice();
             }
         }
@@ -770,15 +772,17 @@
         window.nextPractice = function () {
             const answerInput = document.querySelector(".practice-container .answer-input");
 
+            console.log(currentPracticeIndex)
             // Auto-check answer if not already checked and has input
             if (answerInput && !answerInput.disabled && answerInput.value.trim()) {
                 // checkPracticeAnswer();
-
+                updatePracticeFlag();
                 // Delay moving to next question to show feedback
                 setTimeout(function () {
                     proceedToNext();
                 }, 1500);
             } else {
+                updatePracticeFlag();
                 proceedToNext();
             }
         }
@@ -822,7 +826,7 @@
         //     updatePractice();
         // }
 
-        function togglePracticeFlag() {
+        window.togglePracticeFlag = function() {
             if (practiceFlags.has(currentPracticeIndex)) {
                 practiceFlags.delete(currentPracticeIndex);
             } else {
@@ -1162,7 +1166,7 @@
         <%--const practiceNavPrev = document.querySelector(".practice-container .prev-btn");--%>
         <%--const practiceNavNext = document.querySelector(".practice-container .next-btn");--%>
         <%--const practiceFlagBtn = document.querySelector(".practice-container .flag-btn");--%>
-        <%--const practiceAnswerInput = document.querySelector(".practice-container .answer-input");--%>
+        const practiceAnswerInput = document.querySelector(".practice-container .answer-input");
 
         <%--if (practiceNavPrev) {--%>
         <%--    practiceNavPrev.addEventListener("click", prevPractice);--%>
@@ -1220,7 +1224,7 @@
                         currentExamIndex--;
                         updateExamDisplay();
                     } else if (practiceVisible && document.activeElement !== practiceAnswerInput) {
-                        prevPractice();
+                        previousPractice();
                     }
                     break;
                 case "ArrowRight":
